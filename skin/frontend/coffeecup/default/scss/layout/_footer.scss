@@ -1,0 +1,55 @@
+/* ============================================ *
+ * Footer
+ * ============================================ */
+.footer-container{background:$bg-normal-1st; color:$text_normal_3rd;
+	.footer{padding:($spa_default * 3) 0}
+	.footer-top{ background:lighten($bg-normal-2nd, 8%); padding:$spa_large 0}
+	.footer-bottom{background:$bg-normal-2nd; padding:$spa_large 0}
+	a{color:$text_normal_3rd;
+		&:hover{color:$text_normal_2nd}
+	}
+	p.h5{color:$text_normal_2nd; font-weight:600; margin-bottom:$spa_large - 5}
+	.footer-link{ margin-top:-$spa_small;
+		li a{display:block; padding:$spa_small 0; border-bottom:1px solid $line_normal; @include transition;
+			&:hover{background:$line_normal;}
+		}
+		li.last a{border-bottom:none}
+	}
+	.box-location .footer-link{
+		li{display:block; padding:$spa_small 0; border-bottom:1px solid $line_normal; @include transition;
+			span.fa{width:15px; margin-right:$spa_small; &:before{font-size:16px}}
+		}
+		li.last{border-bottom:none}
+	}
+	.item_tag{
+		margin:0 -($spa_small / 2);
+		li a{float:left; padding:$spa_small; border:1px solid $line_normal; @include transition; margin:$spa_small / 2;
+			&:hover{background:$line_normal;}
+		}
+	}
+	address{margin-bottom:0}
+	.footer-bottom-link{margin:0 $spa_small; text-align:right;
+		li{display:inline-block; margin: 0 $spa_small;}
+	}
+}
+
+.newsletter{
+	.form-subscribe-header label,
+	.block-title{display:none}
+	.block-subscribe .block-title strong{color:$text_normal_2nd; font-weight:600; margin-bottom:$spa_large - 5; display:none}
+	.block-content{margin:0;}
+	.block-subscribe{
+		.input-box{float:left; width:76%; padding:0; margin-right:-1px}
+		.actions{width:24%; float:left; margin:0}
+		.input-box input{width:100%; border:1px solid #fff; height:40px; background:transparent;@include border-radius(0);}
+		button.button{color:$text_normal_2nd; margin:0; @include border-radius(0); width:100%; border:1px solid #fff; height:40px; line-height:40px; background:$bg-normal-1st; padding:0 20px;}
+	}
+}
+
+.footer-social{
+	.social{margin:0 -5px;}
+	a{border:1px solid #fff; font-size:0; padding:4px; display:inline-block; vertical-align:top; width:32px; text-align:center; color:#fff; margin:4px 5px; float:left; height:32px; line-height:32px; @include transition;
+		&:hover{background:$line_normal;}
+	}
+	a span.fa:before{font-size:16px;}
+}

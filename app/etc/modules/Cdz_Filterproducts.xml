@@ -1,0 +1,9 @@
+<?xml version="1.0"?>
+<config>
+    <modules>
+        <Cdz_Filterproducts>
+            <active>true</active>
+            <codePool>local</codePool>
+        </Cdz_Filterproducts>
+    </modules>
+</config> 

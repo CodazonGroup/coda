@@ -1,0 +1,2 @@
+.cdz-loader-wrap{text-align: center;}
+.cdz-loader-wrap .loader{background: #FFF url(../images/ajax-loader.gif) no-repeat; width:35px; height:35px; display: inline-flex; border-radius:100%; background-size:35px 35px;}

@@ -1,0 +1,63 @@
+body {
+    -webkit-text-size-adjust:none;
+    text-align:left;
+	font:$f_default;
+	color:$text_normal_1st;
+}
+a             { text-decoration:none; color:$text_default}
+a:hover       { text-decoration:none; color:$text_normal_1st}
+:focus        { outline:0; }
+a:focus { outline:0!important; }
+h1,.h1{font:$f_h1;color:$text_default; text-transform:uppercase; margin:0 0 10px}
+h2,.h2{font:$f_h2; color:$text_default; text-transform:capitalize!important; margin:0 0 10px}
+h3,.h3{font:$f_h3;}
+h4,.h4{font:$f_h4;}
+h5,.h5{font:$f_h5;}
+h6,.h6{font:$f_h6;}
+
+/* Form Elements */
+input.input-text, select, textarea{
+	
+}
+input.input-text:focus, select:focus, textarea:focus{
+	
+}
+
+code{ }
+.label{}
+label{ }
+.form-list li.control label{
+	
+}
+
+/*label*/
+.add-to-cart label,
+.form-list label,
+.comments .required{ 
+	
+}
+.comments .required em{}
+
+.text-uppercase{text-transform:uppercase}
+/*************************MIXIN THEME********************************/
+@mixin block-page-title{text-align:center; 
+	.b-title{padding:($spa_small + 5) $spa_large; margin-bottom:$spa_large; border-bottom:1px solid $text_default; display:inline-block; vertical-align:top; position:relative; min-width:310px; text-transform:uppercase !important; font:$f_h1;
+		&:before{@include icon-font('\f219', 14px); position:absolute; bottom:-11px; width:40px; height:20px; line-height:20px; background:$bg-default;left:42%; left: calc((100% - 40px) / 2);-webkit-left: calc((100% - 40px) / 2);-o-left: calc((100% - 40px) / 2);-moz-left: calc((100% - 40px) / 2);}
+	}
+}
+.filter-title,
+.block-page-title{@include block-page-title}
+
+/**************GRID ITEM PRODUCT*****************/
+
+
+
+@mixin transition(){
+	-moz-transition: all 500ms ease;
+	-webkit-transition: all 500ms ease;
+	-o-transition: all 500ms ease;
+	transition: all 500ms ease;
+	-moz-backface-visibility: hidden;
+	-webkit-backface-visibility: hidden;
+	backface-visibility: hidden;
+}

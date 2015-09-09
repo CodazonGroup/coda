@@ -1,0 +1,23 @@
+/* ============================================ *
+ * Content
+ * ============================================ */
+.slider_brand{padding:$spa_large 0;
+	.lSSlideWrapper{padding:0 $spa_large}
+	.lSAction > .lSPrev{left:0}
+	.lSAction > .lSNext{right:0}
+}
+
+.breadcrumbs{display:none;}
+.col-main{ border-top:10px solid $bg-normal-3rd}
+.three-banner{ margin-top: -($spa_small * 6); padding: $spa_small; background-color: $bg-default; margin-bottom:50px;
+	.row{margin:0 -5px}
+	.col-sm-8{padding:0 5px}
+}
+
+.nav-tabs-01 .nav-tabs{
+	border:0; text-align:center; display:inline-block;vertical-align:top;
+	li{}
+	> li > a{@include border-radius(0); color:$text_normal_2nd; background-color:$bg-normal-4th; border:0; text-transform:uppercase; margin-right:0; @include transition; font:$f_h4; font-weight:600;}
+	> li:hover > a,
+	> li.active > a, > li.active > a:hover, > li.active > a:focus{border:0; background-color:$bg-normal-3rd; color:$text_normal_2nd; border:0}
+}
