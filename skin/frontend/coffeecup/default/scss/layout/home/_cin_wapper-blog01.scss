@@ -1,6 +1,0 @@
-.cin_wapper-blog01{
-	.blog-title{ margin:($spa_small + 5) 0 ($spa_small - 5); }
-	.blog-text-link a{position:relative; 
-		&:before{@include icon-font('\f101', 12px); margin-right:$spa_small - 5}
-	}
-}

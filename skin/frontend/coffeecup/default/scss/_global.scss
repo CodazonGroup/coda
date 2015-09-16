@@ -39,6 +39,7 @@ label{ }
 .comments .required em{}
 
 .text-uppercase{text-transform:uppercase}
+.clear-padding{padding:0}
 /*************************MIXIN THEME********************************/
 @mixin block-page-title{text-align:center; 
 	.b-title{padding:($spa_small + 5) $spa_large; margin-bottom:$spa_large; border-bottom:1px solid $text_default; display:inline-block; vertical-align:top; position:relative; min-width:310px; text-transform:uppercase !important; font:$f_h1;

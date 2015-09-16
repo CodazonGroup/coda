@@ -1,0 +1,15 @@
+.wapper-blog01{
+	margin-bottom:$spa_large; overflow:hidden;
+	.blog-content{background:#333333; color:#ffffff; padding:20px; font-size:90%;
+		&.odd{background:#505050}
+	}
+	.blog-title{ margin:($spa_small + 5) 0 ($spa_small - 5); 
+		a{color:#fff;}
+	}
+	.blog-author-date{
+		.author{ position:relative; &:before{margin-right:5px; @include icon-font('\f007', 14px)}; margin-right:10px;}
+		.date{ position:relative; &:before{margin-right:5px; @include icon-font('\f073', 14px)};  margin-right:10px;}
+		.comment{ position:relative; &:before{margin-right:5px; @include icon-font('\f27b', 14px)};}
+	}
+	.blog-text-link a{ font-size:11px; display:inline-block; vertical-align:top; padding:10px; color:#fff; background:#c20000; text-transform:uppercase; text-decoration:none}
+}

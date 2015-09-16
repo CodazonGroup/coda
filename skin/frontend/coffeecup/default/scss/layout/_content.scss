@@ -1,13 +1,16 @@
 /* ============================================ *
  * Content
  * ============================================ */
-.slider_brand{padding:$spa_large 0;
+ @import "home/wapper-blog01";
+ 
+ 
+.slider_brand{padding:$spa_large / 2 0; margin-bottom:$spa_large; border:1px solid #f1f1f1;
 	.lSSlideWrapper{padding:0 $spa_large}
-	.lSAction > .lSPrev{left:0}
-	.lSAction > .lSNext{right:0}
+	.lSAction > .lSPrev{left:10px}
+	.lSAction > .lSNext{right:10px}
 }
 
-.breadcrumbs{display:none;}
+/*.breadcrumbs{display:none;}*/
 .col-main{ border-top:10px solid $bg-normal-3rd}
 .three-banner{ margin-top: -($spa_small * 6); padding: $spa_small; background-color: $bg-default; margin-bottom:50px;
 	.row{margin:0 -5px}

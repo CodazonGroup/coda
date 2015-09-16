@@ -13031,6 +13031,10 @@ h6, .h6 {
   text-transform: uppercase;
 }
 
+.clear-padding {
+  padding: 0;
+}
+
 /*************************MIXIN THEME********************************/
 .filter-title,
 .block-page-title {
@@ -13508,23 +13512,99 @@ div.desc {
 /* ============================================ *
  * Content
  * ============================================ */
+.wapper-blog01 {
+  margin-bottom: 30px;
+  overflow: hidden;
+}
+.wapper-blog01 .blog-content {
+  background: #333333;
+  color: #ffffff;
+  padding: 20px;
+  font-size: 90%;
+}
+.wapper-blog01 .blog-content.odd {
+  background: #505050;
+}
+.wapper-blog01 .blog-title {
+  margin: 15px 0 5px;
+}
+.wapper-blog01 .blog-title a {
+  color: #fff;
+}
+.wapper-blog01 .blog-author-date .author {
+  position: relative;
+  margin-right: 10px;
+}
+.wapper-blog01 .blog-author-date .author:before {
+  margin-right: 5px;
+  display: inline-block;
+  font-family: FontAwesome;
+  font-style: normal;
+  font-weight: normal;
+  line-height: 1;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  content: "\f007";
+  font-size: 14px;
+}
+.wapper-blog01 .blog-author-date .date {
+  position: relative;
+  margin-right: 10px;
+}
+.wapper-blog01 .blog-author-date .date:before {
+  margin-right: 5px;
+  display: inline-block;
+  font-family: FontAwesome;
+  font-style: normal;
+  font-weight: normal;
+  line-height: 1;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  content: "\f073";
+  font-size: 14px;
+}
+.wapper-blog01 .blog-author-date .comment {
+  position: relative;
+}
+.wapper-blog01 .blog-author-date .comment:before {
+  margin-right: 5px;
+  display: inline-block;
+  font-family: FontAwesome;
+  font-style: normal;
+  font-weight: normal;
+  line-height: 1;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  content: "\f27b";
+  font-size: 14px;
+}
+.wapper-blog01 .blog-text-link a {
+  font-size: 11px;
+  display: inline-block;
+  vertical-align: top;
+  padding: 10px;
+  color: #fff;
+  background: #c20000;
+  text-transform: uppercase;
+  text-decoration: none;
+}
+
 .slider_brand {
-  padding: 30px 0;
+  padding: 15px 0;
+  margin-bottom: 30px;
+  border: 1px solid #f1f1f1;
 }
 .slider_brand .lSSlideWrapper {
   padding: 0 30px;
 }
 .slider_brand .lSAction > .lSPrev {
-  left: 0;
+  left: 10px;
 }
 .slider_brand .lSAction > .lSNext {
-  right: 0;
+  right: 10px;
 }
 
-.breadcrumbs {
-  display: none;
-}
-
+/*.breadcrumbs{display:none;}*/
 .col-main {
   border-top: 10px solid #c20000;
 }
