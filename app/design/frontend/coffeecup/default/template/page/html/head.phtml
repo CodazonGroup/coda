@@ -31,9 +31,7 @@
 <meta name="robots" content="<?php echo htmlspecialchars($this->getRobots()) ?>" />
 <link rel="icon" href="<?php echo $this->getFaviconFile(); ?>" type="image/x-icon" />
 <link rel="shortcut icon" href="<?php echo $this->getFaviconFile(); ?>" type="image/x-icon" />
-<link href='http://fonts.googleapis.com/css?family=Lato:400,700,700italic,400italic&subset=latin,latin-ext' rel='stylesheet' type='text/css'>            
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
-<script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
+<link href='http://fonts.googleapis.com/css?family=Lato:400,700,700italic,400italic&subset=latin,latin-ext' rel='stylesheet' type='text/css'>
 <!--[if lt IE 7]>
 <script type="text/javascript">
 //<![CDATA[
@@ -43,6 +41,7 @@
 </script>
 <![endif]-->
 <?php echo $this->getCssJsHtml() ?>
+<script type="text/javascript" src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.0/js/bootstrap.min.js"></script>
 <?php echo $this->getChildHtml() ?>
 <?php echo $this->helper('core/js')->getTranslatorScript() ?>
 <?php echo $this->getIncludes() ?>

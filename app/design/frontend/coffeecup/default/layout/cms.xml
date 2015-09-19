@@ -109,6 +109,7 @@ Default layout, loads most of the pages
 
     <cms_index_index translate="label">
         <label>CMS Home Page</label>
+        <remove name="breadcrumbs" />
 		<reference name="footer">
 			<block type="cms/block" name="cms_leopard-homepage-brand">               
                 <action method="setBlockId"><block_id>leopard-homepage-brand</block_id></action>

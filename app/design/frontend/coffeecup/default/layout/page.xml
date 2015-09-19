@@ -36,7 +36,7 @@
 
             <block type="page/html_head" name="head" as="head">
                 <action method="addJs"><script>prototype/prototype.js</script></action>
-                <action method="addJs"><script>lib/jquery/jquery-1.10.2.min.js</script></action>
+                <action method="addJs"><script>cdz/jquery-1.11.3.min.js</script></action>
                 <action method="addJs"><script>lib/jquery/noconflict.js</script></action>
                 <action method="addJs"><script>lib/ccard.js</script></action>
                 <action method="addJs"><script>prototype/validation.js</script></action>
@@ -69,6 +69,7 @@
                 <action method="addLinkRel"><rel>stylesheet</rel><href>//fonts.googleapis.com/css?family=Raleway:300,400,500,700,600</href></action>
                 <action method="addItem"><type>skin_js</type><name>js/minicart.js</name></action>
 				<action method="addItem"><type>skin_js</type><name>js/lightslider.js</name></action>
+                <action method="addItem"><type>skin_js</type><name>js/cdz.dropdown.js</name></action>
 
                 <!-- Add stylesheets with no media queries for use in IE 8 and below -->
 				 <action method="addItem"><type>skin_css</type><name>css/bootstrap/bootstrap.css</name><params/><if><![CDATA[<!--[if (gte IE 9) | (IEMobile)]><!-->]]></if></action>
@@ -79,7 +80,7 @@
                 <!-- Add stylesheets with media queries for use by modern browsers -->
                 <action method="addItem"><type>skin_css</type><name>css/lightslider.css</name><params/><if><![CDATA[<!--[if (gte IE 9) | (IEMobile)]><!-->]]></if></action>
 				<action method="addItem"><type>skin_css</type><name>css/styles.css</name><params/><if><![CDATA[<!--[if (gte IE 9) | (IEMobile)]><!-->]]></if></action>
-                
+                <action method="addItem"><type>skin_css</type><name>css/cdz.dropdown.css</name><params/><if><![CDATA[<!--[if (gte IE 9) | (IEMobile)]><!-->]]></if></action>
 
                 <!-- Sets viewport meta tag using text block -->
                 <block type="core/text" name="head.viewport">
@@ -95,7 +96,7 @@
 
             <block type="page/html_header" name="header" as="header">
                 <block type="page/template_links" name="top.links" as="topLinks"/>
-                <block type="page/switch" name="store_language" as="store_language" template="page/switch/languages.phtml"/>
+                <block type="page/switch" name="store_language" as="store_language" template="page/switch/flags.phtml"/>
                 <block type="core/text_list" name="top.menu" as="topMenu" translate="label">
                     <label>Navigation Bar</label>
                     <block type="page/html_topmenu" name="catalog.topnav" template="page/html/topmenu.phtml">
@@ -143,16 +144,6 @@
                     <action method="setElementClass"><value>bottom-container</value></action>
                 </block>
                 <block type="page/switch" name="store_switcher" as="store_switcher" after="*" template="page/switch/stores.phtml"/>
-                <!--block type="page/template_links" name="footer_links" as="footer_links" template="page/template/links.phtml">
-                    <action method="setTitle"><title>Quick Links</title></action>
-                </block -->
-                <!-- block type="page/template_links" name="footer_links2" as="footer_links2" template="page/template/links.phtml">
-                    <action method="setTitle"><title>Account</title></action>
-                </block -->
-                <!-- This static block can be created and populated in admin. The footer_links cms block can be used as a starting point. -->
-                <!--<block type="cms/block" name="footer_social_links">
-                    <action method="setBlockId"><block_id>footer_social_links</block_id></action>
-                </block>-->
             </block>
 
             <block type="core/text_list" name="before_body_end" as="before_body_end" translate="label">

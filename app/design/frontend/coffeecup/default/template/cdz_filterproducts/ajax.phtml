@@ -1,0 +1,38 @@
+<?php
+    $_productCollection=$this->getProductCollection();
+    $_helper = $this->helper('catalog/output');
+	$_uniqId = $_uniqId = uniqid('ajax');
+	$data = array_replace( array(
+		'categories'	=> '',
+		'filtertype' 	=> '',
+		'attribute'		=> '',
+		'orderby'		=> 'price',
+		'order'			=> 'asc',
+		'limit'			=> 12,
+		'use_ajax'		=> 0,
+		'template'		=> 'cdz_filterproducts/grid.phtml',
+		'custom_template'=>'cdz_filterproducts/custom.phtml',
+		'column_count'	=> 5,
+	),$this->getData());
+?>
+<?php if(!$_productCollection->count()): ?>
+<p class="note-msg"><?php echo $this->__('There are no products matching the selection.') ?></p>
+<?php else: ?>
+<div class="cdz-ajax-wrap" id="<?php echo $_uniqId ?>">
+	<div class="cdz-loader-wrap" style="display: none;"><span class="loader"></span></div>
+</div>
+<script type="text/javascript">
+var loadProductsUrl = '<?php echo $this->getUrl()."filterproducts/filterproducts/loadProductsBlock"; ?>';
+var postData_<?php echo $_uniqId ?> = {};
+postData_<?php echo $_uniqId ?> = <?php echo json_encode($data); ?>;
+var $<?php echo $_uniqId ?> = jQuery('#<?php echo $_uniqId ?>');
+</script>
+<script type="text/javascript">
+jQuery(window).load(function(){
+	loadProductBlock($<?php echo $_uniqId ?>,postData_<?php echo $_uniqId ?>);
+	jQuery(document).bind('scroll',function(){
+		loadProductBlock($<?php echo $_uniqId ?>,postData_<?php echo $_uniqId ?>);
+	});
+});
+</script>
+<?php endif; ?>

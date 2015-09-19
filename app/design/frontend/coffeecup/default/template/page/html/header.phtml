@@ -31,14 +31,19 @@
 <div class="header-top">
 	<div class="container">
 		<div class="row">
-			<div class="header-language-currency col-sm-24">
+			<div class="header-language-currency col-sm-24">				
+				<p class="welcome-msg"><?php echo $this->getChildHtml('welcome') ?> 
+					<?php echo $this->getChildHtml('accountLinks') ?></p>
+				<!-- Account -->
+				<div id="header-account" class="skip-content">
+					<?php echo $this->getChildHtml('topLinks') ?>
+				</div>
 				<div class="store-language">
 					<?php echo $this->getChildHtml('store_language') ?>
 				</div>
 				<div class="store-currency">
-				<?php echo $this->getChildHtml('currency_switcher') ?>
+					<?php echo $this->getChildHtml('currency_switcher') ?>
 				</div>
-				<p class="welcome-msg"><?php echo $this->getChildHtml('welcome') ?> <?php echo $this->getChildHtml('accountLinks') ?></p>
 			</div>
 		</div>
     </div>
@@ -100,11 +105,7 @@
 						<?php echo $this->getChildHtml('topSearch') ?>
 					</div>
 
-					<!-- Account -->
-
-					<div id="header-account" class="skip-content">
-						<?php echo $this->getChildHtml('topLinks') ?>
-					</div>
+					
 				</div>
 			</div>
 		</div>
