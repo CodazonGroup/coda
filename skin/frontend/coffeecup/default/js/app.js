@@ -698,8 +698,11 @@ $j(document).ready(function () {
 
     var skipContents = $j('.skip-content');
     var skipLinks = $j('.skip-link');
-
-    skipLinks.on('click', function (e) {
+    var canTouch = false;
+    if(PointerManager.getPointer() == PointerManager.TOUCH_POINTER_TYPE)
+        canTouch = true;
+    
+    skipLinks.on(canTouch ? 'click' : 'hover', function (e) {
         e.preventDefault();
 
         var self = $j(this);

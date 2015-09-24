@@ -34,7 +34,9 @@ Default layout, loads most of the pages
 
     <default>
         <reference name="top.links">
-            <block type="wishlist/links" name="wishlist_link" />
+            <block type="wishlist/links" name="wishlist_link">
+                <action method="setTemplate"><template>page/template/wishlist-link.phtml</template></action>                
+            </block>
             <action method="addLinkBlock"><blockName>wishlist_link</blockName></action>
         </reference>
 
