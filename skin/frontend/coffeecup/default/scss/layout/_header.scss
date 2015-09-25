@@ -1,7 +1,68 @@
 /* ============================================ *
  * Header
  * ============================================ */
-.header-top{background:$bg-normal-2nd; color:$text_normal_1st}
-.header{background:$bg-normal-1st; color:$text_normal_2nd; border-bottom:10px solid $bg-normal-3rd;
+.header-top{background:$bg-normal-2nd; color:$text_normal_1st; font:$f_h5;}
+.header{background:$bg-normal-1st; color:$text_normal_2nd; border-bottom:10px solid $bg-normal-3rd; font:$f_h5; min-height:136px;
 	li.level0 > a{color:$text_normal_2nd}
 }
+.header-language-currency,
+.header-nav-cart{padding-left:220px}
+.welcome-msg{float:right; margin:5px 0}
+
+/*Logo*/
+.cdz-logo{position:relative}
+.logo-abs{position:absolute; top:0; left:10px; background:red; width:190px; z-index:2; min-height:128px}
+/* -------------------------------------------- *
+ * Account Links
+ */
+.skip-link.skip-account{display:none}
+#header-account.skip-content{display:block}
+#header-account{
+	.links ul{ margin:0 5px; float:right;
+		li{float:left; margin:0 5px;}
+		a{color:#8b8b8b; padding:5px 0; float:left; position:relative; @include transition;
+			&:before{@include icon-font('\f004', 14px); margin:0 5px; color:#fff;}
+			&:hover{color:#fff}
+		}
+	}
+}
+
+/*Language - Currency*/
+.store-language{ display:none}
+.store-currency{display:none}
+
+/*Header Link*/
+.skip-links{float:right; clear:none}
+
+/*Menu*/
+#header-nav{float:left}
+
+/*Cart*/
+.account-cart-wrapper{float:right}
+.header-minicart{background-color: #393737; height:98px; vertical-align:top; 
+	.icon{width:100%; position:relative; background:none; text-align:center; color:#fff; line-height:85px; height:70px;
+		&:before{@include icon-font('\f07a', 35px);}
+	}
+	a{color:#fff}
+}
+
+/*Search*/
+.skip-search{float:right; width:auto;
+	.icon{margin:0 20px; position:relative; background:none; text-align:center; color:#fff; line-height:98px; height:98px;
+		&:before{@include icon-font('\f002', 24px);}
+	}
+	.label{display:none;}
+}
+#header-search {
+    padding: 20px;
+    clear: both;
+    position: absolute;
+    right: 0;
+    top: 98px;
+}
+
+
+
+
+
+

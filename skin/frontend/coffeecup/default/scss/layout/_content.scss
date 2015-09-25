@@ -20,7 +20,7 @@
 .nav-tabs-01 .nav-tabs{
 	border:0; text-align:center; display:inline-block;vertical-align:top;
 	li{}
-	> li > a{@include border-radius(0); color:$text_normal_2nd; background-color:$bg-normal-4th; border:0; text-transform:uppercase; margin-right:0; @include transition; font:$f_h4; font-weight:600;}
+	> li > a{@include border-radius(0); color:$text_normal_2nd; background-color:$bg-normal-4th; border:0; text-transform:uppercase; margin-right:0; @include transition; font:$f_h4; font-weight:600; display:block !important}
 	> li:hover > a,
 	> li.active > a, > li.active > a:hover, > li.active > a:focus{border:0; background-color:$bg-normal-3rd; color:$text_normal_2nd; border:0}
 }
