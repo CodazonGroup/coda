@@ -78,27 +78,7 @@ Default layout, loads most of the pages
                 <label>CMS Content Wrapper</label>
                 <action method="setElementClass"><value>std</value></action>
                 <block type="cms/page" name="cms_page"/>
-            </block>
-			
-			<block type="cms/block" name="cms_coffeecup-homepage-three-banner">       
-                <action method="setBlockId"><block_id>coffeecup-homepage-three-banner</block_id></action>
-            </block>
-			<block type="cms/block" name="cms_coffeecup-homepage-tabproduct01">       
-                <action method="setBlockId"><block_id>coffeecup-homepage-tabproduct01</block_id></action>
-            </block>
-			<block type="cms/block" name="cms_coffeecup-homepage-banner">       
-                <action method="setBlockId"><block_id>coffeecup-homepage-banner</block_id></action>
-            </block>
-			<block type="cms/block" name="cms_coffeecup-homepage-tabproduct02">       
-                <action method="setBlockId"><block_id>coffeecup-homepage-tabproduct02</block_id></action>
-            </block>
-			<block type="cms/block" name="cms_coffeecup-homepage-blog">       
-                <action method="setBlockId"><block_id>coffeecup-homepage-blog</block_id></action>
-            </block>
-			<block type="cms/block" name="cms_coffeecup-homepage-brand">       
-                <action method="setBlockId"><block_id>coffeecup-homepage-brand</block_id></action>
-            </block>
-			
+            </block>					
         </reference>
         <reference name="slideshow">
 			<block type="cms/block" name="cms_coffeecup-homepage-slideshow">       
@@ -110,11 +90,26 @@ Default layout, loads most of the pages
     <cms_index_index translate="label">
         <label>CMS Home Page</label>
         <remove name="breadcrumbs" />
-		<reference name="footer">
-			<block type="cms/block" name="cms_leopard-homepage-brand">               
-                <action method="setBlockId"><block_id>leopard-homepage-brand</block_id></action>
+        <reference name="content">
+            <block type="cms/block" name="cms_coffeecup-homepage-three-banner">       
+                <action method="setBlockId"><block_id>coffeecup-homepage-three-banner</block_id></action>
             </block>
-        </reference>
+            <block type="cms/block" name="cms_coffeecup-homepage-tabproduct01">       
+                <action method="setBlockId"><block_id>coffeecup-homepage-tabproduct01</block_id></action>
+            </block>
+            <block type="cms/block" name="cms_coffeecup-homepage-banner">       
+                <action method="setBlockId"><block_id>coffeecup-homepage-banner</block_id></action>
+            </block>
+            <block type="cms/block" name="cms_coffeecup-homepage-tabproduct02">       
+                <action method="setBlockId"><block_id>coffeecup-homepage-tabproduct02</block_id></action>
+            </block>
+            <block type="cms/block" name="cms_coffeecup-homepage-blog">       
+                <action method="setBlockId"><block_id>coffeecup-homepage-blog</block_id></action>
+            </block>
+            <block type="cms/block" name="cms_coffeecup-homepage-brand">       
+                <action method="setBlockId"><block_id>coffeecup-homepage-brand</block_id></action>
+            </block>
+        </reference>		
     </cms_index_index>
 
     <cms_index_defaultindex>
