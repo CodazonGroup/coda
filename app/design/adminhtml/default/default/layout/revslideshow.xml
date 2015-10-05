@@ -1,0 +1,30 @@
+<?xml version="1.0"?>
+<layout version="0.1.0">
+  <revslideshow_adminhtml_revslideshow_index>
+	<reference name="content">
+	  <block type="revslideshow/adminhtml_revslideshow" name="revslideshow" />
+	</reference>
+  </revslideshow_adminhtml_revslideshow_index>
+  <revslideshow_adminhtml_revslideshow_new>
+      <update handle="editor" />
+        <reference name="head">            
+            <action method="addCss"><stylesheet>cdz/jquery-ui.css</stylesheet></action>            
+            <action method="addCss"><stylesheet>cdz/jquery-ui.structure.min.css</stylesheet></action> 
+            <action method="addCss"><stylesheet>cdz/jquery-ui.theme.css</stylesheet></action>            
+            <action method="addJs"><script>cdz/jquery-1.11.3.min.js</script></action>               
+            <action method="addJs"><script>cdz/jquery-ui.min.js</script></action>
+                    
+        </reference>      
+    </revslideshow_adminhtml_revslideshow_new>
+  <revslideshow_adminhtml_revslideshow_edit>
+        <update handle="editor" />
+        <reference name="head">            
+            <action method="addCss"><stylesheet>cdz/jquery-ui.css</stylesheet></action>            
+            <action method="addCss"><stylesheet>cdz/jquery-ui.structure.min.css</stylesheet></action> 
+            <action method="addCss"><stylesheet>cdz/jquery-ui.theme.css</stylesheet></action>            
+            <action method="addJs"><script>cdz/jquery-1.11.3.min.js</script></action>               
+            <action method="addJs"><script>cdz/jquery-ui.min.js</script></action>
+                    
+        </reference>
+    </revslideshow_adminhtml_revslideshow_edit>
+</layout>

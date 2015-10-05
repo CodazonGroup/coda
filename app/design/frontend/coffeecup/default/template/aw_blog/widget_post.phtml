@@ -23,13 +23,25 @@
  * @copyright  Copyright (c) 2010-2012 aheadWorks Co. (http://www.aheadworks.com)
  * @license    http://ecommerce.aheadworks.com/AW-LICENSE.txt
  */
-?><?php if ($posts = $this->getRecent()): ?>
-    <div class="widget-latest">
-        <h2><?php echo Mage::helper('blog')->__('Latest Posts'); ?></h2>
-        <ul>
-            <?php foreach ($posts as $post): ?>
-                <li><a href="<?php echo $post->getAddress(); ?>" ><?php echo $post->getTitle(); ?></a></li>
-            <?php endforeach; ?>
-        </ul>
-    </div>
+?>
+
+<?php if ($posts = $this->getRecent()): ?>
+<?php $count = count($posts); ?>
+<div class="wapper-blog01">
+	<div>
+		<?php foreach ($posts as $post): ?>
+		<div class="col-sm-<?php echo 24/$count ?> clear-padding">
+			<div class="blog-content even">
+				<a href="#"><img class="img-responsive" alt="cin blog" src="{{media url='wysiwyg/coffeecup/cc-img04.jpg'}}" /></a>
+				<div class="content">
+					<h5 class="blog-title"><a href="<?php echo $post->getAddress(); ?>"><?php echo $post->getTitle(); ?></a></h5>
+					<p class="blog-author-date"><span class="author"><?php echo $post->getUser(); ?></span><span class="date"><?php echo $post->getCreatedTime() ?></span><span class="comment"><?php echo $post->getComments().' '.$this->__('comments'); ?></span></p>
+					<p class="blog-desc"><?php echo $post->getShortContent() ?></p>
+					<p class="blog-text-link"><a class="btn-link" href="<?php echo $post->getAddress(); ?>"><span><?php echo $this->__('Read more') ?><span></a></p>
+				</div>
+			</div>
+		</div>	
+		<?php endforeach; ?>
+	</div>
+</div>
 <?php endif; ?>

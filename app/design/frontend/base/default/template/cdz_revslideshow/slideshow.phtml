@@ -1,0 +1,196 @@
+<?php
+	$helper = Mage::helper('cms');
+    $processor = $helper->getBlockTemplateProcessor();
+    $slider = $this->getSlider();     
+    $general_settings = $slider['general_settings'];
+    $loop = $slider['loop'];    
+    $appearance = $slider['appearance'];
+    $navigation = $slider['navigation'];
+    $thumbnails = $slider['thumbnails'];
+    $spinner = $slider['spinner'];
+    $parallax = $slider['parallax'];
+    $mobile_settings = $slider['mobile_settings'];
+    $fullWidth =  "off";
+	$fullScreen = "off";		
+	$sliderId		= 	$slider["id"];			
+	$sliderWrapperId 	= 	"cdz_slider_".$sliderId.uniqid('slider');
+
+	switch($general_settings['slider_type']){			
+			case "fixed":
+				$bannerStyle = "height:".$general_settings['startheight']."px;width:".$general_settings['startwidth']."px;";
+				$containerStyle ="height:".$general_settings['startheight']."px;width:".$general_settings['startwidth']."px;";
+				
+			break;		
+			case "fullwidth":
+				$sliderWrapperClass = " fullwidthbanner-container";
+				$sliderClass = " fullwidthabanner";
+				$bannerStyle = "max-height:".$general_settings['startheight']."px;height:".$general_settings['startheight']."px;";
+				$containerStyle = "height:".$general_settings['startheight']."px;";
+				$fullWidth = "on";
+			break;
+			case "fullsrceen":
+				$sliderWrapperClass = " fullscreenbanner-container";
+				$sliderClass = " fullscreenbanner";
+				$fullScreen = "on";
+			break;
+			default:
+		}	
+
+?>
+<?php if($slider['is_active'] == 1 && count($slider['slider']) > 0 ): ?>	
+	<div class="tp-banner-container <?php echo $sliderWrapperClass?>" style="<?php echo $containerStyle?>">
+		<div class="tp-banner <?php echo $sliderClass?>" id="<?php echo $sliderWrapperId ?>" style="<?php echo $bannerStyle?>">
+			<ul>
+				<?php foreach($slider['slider'] as $key => $value): ?>				
+				<!-- SLIDE  -->
+				<li data-transition="<?php echo $value['transitions'] ?>" data-randomtransition="on"  data-slotamount="<?php echo $value['slot_amount'] ?>" data-masterspeed="<?php echo $value['masterspeed'] ?>" data-delay="<?php echo $value['delay'] ?>" data-link="<?php echo $value['link'] ?>" data-target="_self" data-thumb="<?php echo Mage::helper('revslideshow')->getThumbnailImage($value['image'],$thumbnails['thumbWidth'],$thumbnails['thumbHeight']) ?>" data-title="<?php echo $value['title'] ?>" data-saveperformance="on">
+					<!-- MAIN IMAGE -->
+					<img src="<?php echo Mage::getBaseUrl(Mage_Core_Model_Store::URL_TYPE_MEDIA).'cdz/revslideshow/images/dummy.png' ?>"   alt="<?php echo $value['title'] ?>"  data-bgfit="<?php echo $value['background_fit'] ?>" data-bgposition="<?php echo $value['background_position'] ?>" data-bgrepeat="<?php echo $value['background_repeat'] ?>" data-lazyload="<?php echo Mage::getBaseUrl(Mage_Core_Model_Store::URL_TYPE_MEDIA).'cdz/revslideshow/images/'.$value['image'] ?>" <?php if($value['kenburn_effect'] =="on"): ?> data-kenburns="<?php echo $value['kenburn_effect'] ?>" data-duration="<?php echo $value['duration_kenburn'] ?>" data-ease="<?php echo $value['easing_kenburn'] ?>" <?php endif; ?>>					
+					<?php if($value['video_link']): ?>
+					<?php $video_type = Mage::helper('revslideshow')->checkVideoUrl($value['video_link']); ?>
+					<?php if ($video_type == 'youtube'): ?>					
+					<?php
+							$youtubeId = Mage::helper('revslideshow')->getYoutubeVideoId($value['video_link']);
+					?>													
+						 <div class="tp-caption sfl fadeout fullscreenvideo tp-videolayer" data-x="0" data-y="0" data-speed="600" data-start="1000" data-easing="Power4.easeOut" data-endspeed="500" data-endeasing="Power4.easeOut" data-autoplay="true" data-autoplayonlyfirsttime="false" data-nextslideatend="true" style="z-index: 8" data-ytid="<?php echo $youtubeId ?>" data-videoattributes="enablejsapi=1&html5=1&hd=1&wmode=opaque&showinfo=0&rel=0" data-videocontrols="controls" data-videowidth="100%" data-videoheight="100%" data-volume="mute">
+						</div>						
+						<?php 	elseif ($video_type == 'vimeo'): 
+							$vimeoId = Mage::helper('revslideshow')->getVimeoVideoId($value['video_link']);
+						?>					
+						 <div class="tp-caption sfl fadeout fullscreenvideo tp-videolayer" data-x="0" data-y="0" data-speed="600" data-start="1000" data-easing="Power4.easeOut" data-endspeed="500" data-endeasing="Power4.easeOut" data-autoplay="true" data-autoplayonlyfirsttime="false" data-nextslideatend="true" style="z-index: 8" data-vimeoid="<?php echo $vimeoId ?>" data-videoattributes="enablejsapi=1&html5=1&hd=1&wmode=opaque&showinfo=0&rel=0" data-videocontrols="controls" data-videowidth="100%" data-videoheight="100%" forcecover="1" data-forcerewind="on" data-volume="mute">
+						</div>						
+						<?php 	else: ?>
+							<div class="tp-caption tp-fade fadeout fullscreenvideo tp-videolayer" data-x="0" data-y="0" data-speed="600" data-start="1000" data-easing="Power4.easeOut" data-elementdelay="0.01" data-endelementdelay="0.1" data-endspeed="500" data-endeasing="Power4.easeIn" data-autoplay="true" data-autoplayonlyfirsttime="false" data-nextslideatend="true" data-videowidth="100%" data-videoheight="100%" data-videopreload="meta" data-videoloop="none" data-videowebm="<?php echo $value['video_link'] ?>" data-videocontrols="none" data-forcecover="1" data-forcerewind="on" data-aspectratio="16:9" data-volume="mute" data-videoposter="<?php echo Mage::getBaseUrl(Mage_Core_Model_Store::URL_TYPE_MEDIA).'cdz/revslideshow/images/'.$value['image'] ?>"></div>
+						<?php endif; ?>						
+						
+					<?php endif ?>
+					<!-- LAYERS -->
+					<?php foreach($value['layer'] as $lKey => $layer): ?>
+					<div class="tp-caption customout <?php echo $layer['incoming_animation'].' '. $layer['outgoing_animation'].' '. $layer['parallax'] ?>"
+						data-x="<?php echo $layer['axis_x'] ?>"						
+						data-y="<?php echo $layer['axis_y'] ?>"		
+						data-customout="x:0;y:0;z:0;rotationX:0;rotationY:0;rotationZ:0;scaleX:0.75;scaleY:0.75;skewX:0;skewY:0;opacity:0;transformPerspective:600;transformOrigin:50% 50%;"				
+						data-speed="<?php echo $layer['speed'] ?>"
+						data-start="<?php echo $layer['start'] ?>"
+						data-easing="<?php echo $layer['start_easing'] ?>"
+						data-endspeed="<?php echo $layer['speed'] ?>" data-end="<?php echo $layer['end'] ?>" data-endeasing="<?php echo $layer['end_easing'] ?>"
+						data-elementdelay="0.1" data-endelementdelay="0.1">
+						<?php echo $processor->filter($layer['text']); ?>
+					</div>
+					<?php endforeach; ?>	
+				</li>								
+				<?php endforeach; ?>	
+			</ul>			
+			<?php if($appearance['hideTimerBar'] == 'on'): ?>
+				<div class="tp-bannertimer <?php echo $appearance['timer_position']?>"></div>
+			<?php else: ?>
+				<div class="tp-bannertimer" style="display:none"></div>
+			<?php endif; ?>
+		</div>
+	</div>
+	<script type="text/javascript">
+
+	var revapi;
+
+	jQuery(document).ready(function() {
+
+		   revapi_<?php echo $sliderId ?> = jQuery('#<?php echo $sliderWrapperId ?>').revolution({
+				delay:<?php echo ($general_settings['delay']) ? $general_settings['delay'] : '9000' ?>,
+				startwidth:<?php echo ($general_settings['startwidth']) ? $general_settings['startwidth'] : '960' ?>,
+				startheight:<?php echo ($general_settings['startheight']) ? $general_settings['startheight'] : '500' ?>,
+				startWithSlide:<?php echo ($loop['startWithSlide']) ? $loop['startWithSlide'] : '0' ?>,
+
+				fullScreenAlignForce:"off",
+				autoHeight:"off",
+				minHeight:"off",
+
+				shuffle:"<?php echo ($general_settings['shuffle']) ? $general_settings['shuffle'] : 'off' ?>",
+
+				onHoverStop:"on",
+
+				thumbWidth:<?php echo ($thumbnails['thumbWidth']) ? $thumbnails['thumbWidth'] : '100' ?>,
+				thumbHeight:<?php echo ($thumbnails['thumbHeight']) ? $thumbnails['thumbHeight'] : '50' ?>,
+				thumbAmount:<?php echo ($thumbnails['thumbAmount']) ? $thumbnails['thumbAmount'] : '3' ?>,
+
+				hideThumbsOnMobile:"<?php echo ($mobile_settings['hideThumbsOnMobile']) ? $mobile_settings['hideThumbsOnMobile'] : 'off' ?>",
+				hideNavDelayOnMobile:1500,
+				hideBulletsOnMobile:"<?php echo ($mobile_settings['hideBulletsOnMobile']) ? $mobile_settings['hideBulletsOnMobile'] : 'off' ?>",
+				hideArrowsOnMobile:"<?php echo ($mobile_settings['hideArrowsOnMobile']) ? $mobile_settings['hideArrowsOnMobile'] : 'off' ?>",
+				hideThumbsUnderResoluition:<?php echo ($mobile_settings['hideThumbsUnderResoluition']) ? $mobile_settings['hideThumbsUnderResoluition'] : '0' ?>,
+
+				hideThumbs:<?php echo ($thumbnails['hideThumbs']) ? $thumbnails['hideThumbs'] : '0' ?>,
+
+				hideTimerBar:"<?php echo ($appearance['hideTimerBar']) ? $appearance['hideTimerBar'] : 'off' ?>",
+
+				keyboardNavigation:"off",
+
+				navigationType:"<?php echo ($navigation['navigationType']) ? $navigation['navigationType'] : 'bullet' ?>",
+				navigationArrows:"<?php echo ($navigation['navigationArrows']) ? $navigation['navigationArrows'] : 'solo' ?>",
+				navigationStyle:"<?php echo (isset($navigation['navigationStyle'])) ? $navigation['navigationStyle'] : 'round' ?>",
+
+				navigationHAlign:"<?php echo ($navigation['navigationHAlign']) ? $navigation['navigationHAlign'] : 'center' ?>",
+				navigationVAlign:"<?php echo ($navigation['navigationVAlign']) ? $navigation['navigationVAlign'] : 'bottom' ?>",
+				navigationHOffset:<?php echo ($navigation['navigationHOffset']) ? $navigation['navigationHOffset'] : '30' ?>,
+				navigationVOffset:<?php echo ($navigation['navigationVOffset']) ? $navigation['navigationVOffset'] : '30' ?>,
+
+				soloArrowLeftHalign:"<?php echo (isset($navigation['soloArrowLeftHalign'])) ? $navigation['soloArrowLeftHalign'] : 'left' ?>",
+				soloArrowLeftValign:"<?php echo (isset($navigation['soloArrowLeftValign'])) ? $navigation['soloArrowLeftValign'] : 'center' ?>",
+				<?php if(isset($navigation['soloArrowLeftHOffset'])): ?>
+					soloArrowLeftHOffset:<?php echo ($navigation['soloArrowLeftHOffset']) ? $navigation['soloArrowLeftHOffset'] : '20' ?>,
+				<?php endif; ?>
+				<?php if(isset($navigation['soloArrowLeftVOffset'])): ?>
+					soloArrowLeftVOffset:<?php echo ($navigation['soloArrowLeftVOffset']) ? $navigation['soloArrowLeftVOffset'] : '0' ?>,
+				<?php endif; ?>
+				<?php if(isset($navigation['soloArrowRightHalign'])): ?>
+				soloArrowRightHalign:"<?php echo ($navigation['soloArrowRightHalign']) ? $navigation['soloArrowRightHalign'] : 'left' ?>",
+				<?php endif; ?>
+				<?php if(isset($navigation['soloArrowRightValign'])): ?>
+				soloArrowRightValign:"<?php echo ($navigation['soloArrowRightValign']) ? $navigation['soloArrowRightValign'] : 'center' ?>",
+				<?php endif; ?>
+				<?php if(isset($navigation['soloArrowRightHOffset'])): ?>
+				soloArrowRightHOffset:<?php echo ($navigation['soloArrowRightHOffset']) ? $navigation['soloArrowRightHOffset'] : '20' ?>,
+				<?php endif; ?>
+				<?php if(isset($navigation['soloArrowRightVOffset'])): ?>
+				soloArrowRightVOffset:<?php echo ($navigation['soloArrowRightVOffset']) ? $navigation['soloArrowRightVOffset'] : '0' ?>,
+				<?php endif; ?>
+
+
+				touchenabled:"<?php echo ($mobile_settings['touchenabled']) ? $mobile_settings['touchenabled'] : 'on' ?>",
+				swipe_velocity:"0.7",
+				swipe_max_touches:"1",
+				swipe_min_touches:"1",
+				drag_block_vertical:"false",
+
+				parallax:"<?php echo $parallax['parallax'] ? $parallax['parallax'] : 'mouse' ?>",
+				parallaxBgFreeze:"<?php echo $parallax['parallaxBgFreeze'] ? $parallax['parallaxBgFreeze'] : 'on' ?>",
+				parallaxLevels:[<?php echo $parallax['parallaxLevels'] ? $parallax['parallaxLevels'] : '10,7,4,3,2,5,4,3,2,1' ?>],
+				parallaxDisableOnMobile:"off",
+
+				stopAtSlide:<?php echo ($loop['stopAtSlide']) ? $loop['stopAtSlide'] : '-1' ?>,
+				stopAfterLoops:<?php echo ($loop['stopAfterLoops']) ? $loop['stopAfterLoops'] : '-1' ?>,
+				hideCaptionAtLimit:<?php echo ($mobile_settings['hideCaptionAtLimit']) ? $mobile_settings['hideCaptionAtLimit'] : '0' ?>,
+				hideAllCaptionAtLilmit:<?php echo (isset($mobile_settings['hideAllCaptionAtLilmit'])) ? $mobile_settings['hideAllCaptionAtLilmit'] : '0' ?>,
+				hideSliderAtLimit:<?php echo ($mobile_settings['hideSliderAtLimit']) ? $mobile_settings['hideSliderAtLimit'] : '0' ?>,
+
+				dottedOverlay:"none",
+
+				spinned:"<?php echo (isset($spinner['spinned'])) ? $spinner['spinned'] : '0' ?>",
+
+				fullWidth:"<?php echo $fullWidth ?>",
+				forceFullWidth:"off",
+				fullScreen:"<?php echo $fullScreen ?>",
+				fullScreenOffsetContainer:"",
+				fullScreenOffset:"0px",
+
+				panZoomDisableOnMobile:"<?php echo ($mobile_settings['panZoomDisableOnMobile']) ? $mobile_settings['panZoomDisableOnMobile'] : 'off' ?>",
+
+				simplifyAll:"<?php echo (isset($mobile_settings['simplifyAll'])) ? $mobile_settings['simplifyAll'] : 'off' ?>",
+
+				shadow:<?php echo ($appearance['shadow']) ? $appearance['shadow'] : '0' ?>,
+				videoJsPath:"rs-plugin/videojs/",
+			});
+
+	});
+</script>
+
+<?php endif; ?>

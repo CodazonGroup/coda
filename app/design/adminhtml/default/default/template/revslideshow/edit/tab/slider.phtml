@@ -1,0 +1,844 @@
+<div class="entry-edit">
+<?php
+  $count = count($this->getSlider());
+?>
+<h2 class="slider-title"><?php echo $this->__("Slider List") ?></h2>
+<div class="buttons">
+  <button id="addNewImageSlider" type="button" class="add" onclick="return addNewSlider()">
+    <span>
+      <span><?php echo $this->__('Add New Image')?></span>
+    </span>
+  </button>     
+</div>
+<div id="slider-container">
+  <?php if($count == 0): ?>
+  <div class="group" id="slider_1" >
+    <h3><?php echo $this->__('Slider 1') ?></h3>
+    <div>
+      <div class="slider-container">
+        <table cellspacing="0" cellpadding="0" class="option-header">              
+          <tbody>
+            <tr>
+              <td class="label"><label for="title"><?php echo $this->__("Title") ?></label></td>
+              <td class="value">
+                <input name="slider[1][title]" value="" type="text" class=" input-text">
+                
+              </td>
+              <td class="note"><span><?php echo $this->__("Use when Navigation Style Preview1 - Preview4 "); ?></span></td>
+            </tr>
+            <tr>
+              <td class="label"><label for="image"><?php echo $this->__("Image") ?></label></td>
+              <td class="value">
+                <input type="file" class="input-file" value="" name="slider_1" />
+                
+              </td>
+              <td class="note"><span><?php echo $this->__("Main Image") ?></span></td>
+            </tr>
+            <tr>
+              <td class="label"><label for="background_repeat"><?php echo $this->__("Background Repeat") ?></label></td>
+              <td class="value">
+                
+                <select name="slider[1][background_repeat]">
+                  <?php foreach (Mage::getModel("revslideshow/repeat")->getOptionArray() as $key => $value): ?>
+                  <option value="<?php echo $key ?>"><?php echo $value ?></option>
+                  <?php endforeach; ?>
+                  
+                </select>
+              </td>
+              <td class="note"><span><?php echo $this->__("The way the image is shown in the slide main container"); ?></span></td>
+            </tr>
+            <tr>
+              <td class="label"><label for="background_fit"><?php echo $this->__("Background Fit") ?></label></td>
+              <td class="value">
+                <input id="bgfit" name="slider[1][background_fit]" value="" type="text" class=" input-text">
+                
+              </td>
+              <td class="note"><span><?php echo $this->__("Possible values: <strong>cover / contain / normal / width(%) height(%)")?></strong>.
+                </br><?php echo $this->__("Select one to decide how the image should fit in the Slide Main Container. For Kenburn only use number") ?>
+              </span></td>
+          </tr>
+          <tr>
+            <td class="label"><label for="background_fit_end"><?php echo $this->__("Background Fit End") ?></label></td>
+            <td class="value">
+              <input type="text" class="input-text" value="" name="slider[1][background_fit_end]" />
+              
+            </td>
+            <td class="note"><span><?php echo $this->__("Use Only Number") ?></span></td>
+          </tr>
+          <tr>
+            <td class="label"><label for="background_position"><?php echo $this->__("Background Position") ?></label></td>
+            <td class="value">
+              <select name="slider[1][background_position]">
+                <?php foreach (Mage::getModel("revslideshow/backgroundposition")->getOptionArray() as $key => $value): ?>
+                <option value="<?php echo $key ?>"><?php echo $value ?></option>
+                <?php endforeach; ?>
+              </select>
+              
+            </td>
+            <td class="note"></td>
+          </tr>
+          <tr>
+            <td class="label"><label for="background_position_end"><?php echo $this->__("Background Position End") ?></label></td>
+            <td class="value">
+              <select name="slider[1][background_position_end]">
+                <?php foreach (Mage::getModel("revslideshow/backgroundposition")->getOptionArray() as $key => $value): ?>
+                <option value="<?php echo $key ?>"><?php echo $value ?></option>
+                <?php endforeach; ?>    
+              </select>
+            </td>
+            <td class="note"></td>
+          </tr>
+          <tr>
+            <td class="label"><label for="kenburn_effect"><?php echo $this->__("Ken Burns Effect") ?></label></td>
+            <td class="value">
+              <input type="radio" name="slider[1][kenburn_effect]" value="on" id="kenburneon" />
+              <label class="inline" for="shuffleon">On</label>
+              <input type="radio" name="slider[1][kenburn_effect]" value="off" id="kenburenoff" checked="checked" />
+              <label class="inline" for="shuffleoff">Off</label>
+              
+            </td>
+            <td class="note"><span><?php echo $this->__("Ken Burns Effect") ?></span></td>
+          </tr>
+          <tr>
+            <td class="label"><label for="duration_kenburn"><?php echo $this->__("Duration for Ken Burns") ?></label></td>
+            <td class="value">
+              <input type="text" class="input-text" value="" name="slider[1][duration_kenburn]" />
+              
+            </td>
+            <td class="note"><span><?php echo $this->__("The value in ms how long the animation of ken burns effect should go") ?></span></td>
+          </tr>
+          <tr>
+            <td class="label"><label for="easing_kenburn"><?php echo $this->__("Easing of Ken Burns Effect") ?></label></td>
+            <td class="value">
+              <select name="slider[1][easing_kenburn]">
+                <?php foreach (Mage::getModel("revslideshow/easing")->getOptionArray() as $key => $value): ?>
+                <option value="<?php echo $key ?>"><?php echo $value ?></option>
+                <?php endforeach; ?>    
+              </select>
+              
+            </td>
+            <td class="note"><span><?php echo $this->__("The Movement Easing") ?></span></td>
+          </tr>        
+          <tr>
+            <td class="label"><label for="transitions"><?php echo $this->__('Transitions') ?></label></td>
+            <td class="value">
+              <select name="slider[1][transitions]" class="sel_trans">
+                <?php foreach (Mage::getModel("revslideshow/transition")->getOptionArray() as $key => $value): ?>
+                <option value="<?php echo $key ?>"><?php echo $value ?></option>
+                <?php endforeach; ?>
+              </select>
+              
+            </td>
+            <td class="note"><span><?php echo $this->__('The appearance transition of this slide') ?></span></td>
+          </tr>
+          <tr>
+            <td class="label"><label for="slot_amount"><?php echo $this->__('Slot Amount') ?></label></td>
+            <td class="value">
+              <input name="slider[1][slot_amount]" value="" type="text" class=" input-text">
+              
+            </td>
+            <td class="note"><span><?php echo $this->__('The number of slots or boxes the slide is divided into') ?></span></td>
+          </tr>
+          <tr>
+            <td class="label"><label for="transition_duration"><?php echo $this->__('Transition Duration') ?></label></td>
+            <td class="value">
+              <input name="slider[1][transition_duration]" value="" type="text" class=" input-text">       
+            </td>
+            <td class="note"><span><?php echo $this->__('The speed of the transition in "ms"') ?></span></td>
+          </tr>
+          <tr>
+            <td class="label"><label for="delay"><?php echo $this->__('Delay') ?></label></td>
+            <td class="value">
+              <input  name="slider[1][delay]" value="" type="text" class=" input-text">
+              
+            </td>
+            <td class="note"><span><?php echo $this->__('A new Dealy value for the Slide') ?></span></td>
+          </tr>
+          <tr>
+            <td class="label"><label for="link"><?php echo $this->__('Link') ?></label></td>
+            <td class="value">
+              <input name="slider[1][link]" value="" type="text" class=" input-text">
+              
+            </td>
+            <td class="note"><span><?php echo $this->__('A link on the whole slide pic') ?></span></td>
+          </tr>   
+        </tbody>
+      </table>
+      <div class="bottom-slider-container">
+        <button onclick="return addLayer(1);" class="scalable add" type="button" title="Add Layer">
+          <span><span><?php echo $this->__('Add Layer') ?></span></span>
+        </button>
+      </div>
+    </div>
+    <div class="layer_container_1">
+    </div>
+    <button class="removeSlider" type="button" onclick="return removeSlider(this);">
+      <span>
+        <span><?php echo $this->__('Remove Slider')?></span>
+      </span>
+    </button>
+  </div>
+</div>
+<?php else: ?>
+<?php $i = 1; foreach ($this->getSlider() as $index => $slider): ?>  
+<div class="group" id="slider_<?php echo $index ?>">
+    <h3><?php echo $slider['title'] ?></h3>    
+    <div>
+    <div class="slider-container">
+      <table cellspacing="0" cellpadding="0" class="option-header">              
+        <tbody>
+          <tr>
+            <td class="label"><label for="title"><?php echo $this->__("Title") ?></label></td>
+            <td class="value">
+              <input name="slider[<?php echo $index ?>][title]" value="<?php echo $slider['title'] ?>" type="text" class=" input-text">
+              
+            </td>
+            <td class="note"><span><?php echo $this->__("Use when Navigation Style Preview1 - Preview4 "); ?></span></td>
+          </tr>
+          <tr>
+            <td class="label"><label for="image"><?php echo $this->__("Image") ?></label></td>
+            <td class="value">
+            <?php if($slider['image']): ?>
+              <a href="<?php echo Mage::helper('revslideshow')->getImageUrl($slider['image']) ?>" onclick="imagePreview('preview_<?php echo $slider['image'] ?>'); return false;">
+              <img id="preview_<?php echo $slider['image'] ?>" src="<?php echo Mage::helper('revslideshow')->getImageUrl($slider['image']) ?>" title="slider_<?php echo $index ?>" alt="slider_<?php echo $index ?>" height="50" width="50" class="small-image-preview v-middle" />
+              </a>     
+              <input type="hidden" value="<?php echo $slider['image'] ?>" name="slider[<?php echo $index ?>][image]" />
+              <?php endif; ?>               
+              <input type="file" class="input-file" value="<?php echo $slider['image'] ?>" name="slider_<?php echo $index ?>" />
+              
+            </td>
+            <td class="note"><span><?php echo $this->__("Main Image") ?></span></td>
+          </tr>
+          <tr>
+            <td class="label"><label for="background_repeat"><?php echo $this->__("Background Repeat") ?></label></td>
+            <td class="value">
+              
+              <select name="slider[<?php echo $index ?>][background_repeat]">
+                <?php foreach (Mage::getModel("revslideshow/repeat")->getOptionArray() as $key => $value): ?>
+                <option value="<?php echo $key ?>" <?php if($key == $slider['background_repeat']) echo "selected" ?>><?php echo $value ?></option>
+                <?php endforeach; ?>
+                
+              </select>
+            </td>
+            <td class="note"><span><?php echo $this->__("The way the image is shown in the slide main container"); ?></span></td>
+          </tr>
+          <tr>
+            <td class="label"><label for="background_fit"><?php echo $this->__("Background Fit") ?></label></td>
+            <td class="value">
+              <input id="bgfit" name="slider[<?php echo $index ?>][background_fit]" value="<?php echo $slider['background_fit'] ?>" type="text" class=" input-text">
+              
+            </td>
+            <td class="note"><span><?php echo $this->__("Possible values: <strong>cover / contain / normal / width(%) height(%)")?></strong>.
+              </br><?php echo $this->__("Select one to decide how the image should fit in the Slide Main Container. For Kenburn only use number") ?>
+            </span></td>
+        </tr>
+        <tr>
+          <td class="label"><label for="background_position"><?php echo $this->__("Background Position") ?></label></td>
+          <td class="value">
+            <select name="slider[<?php echo $index ?>][background_position]">
+              <?php foreach (Mage::getModel("revslideshow/backgroundposition")->getOptionArray() as $key => $value): ?>
+              <option value="<?php echo $key ?>" <?php if($key == $slider['background_position']) echo "selected" ?>><?php echo $value ?></option>
+              <?php endforeach; ?>
+            </select>
+            
+          </td>
+          <td class="note"></td>
+        </tr>
+        <tr>
+          <td class="label"><label for="background_position_end"><?php echo $this->__("Background Position End") ?></label></td>
+          <td class="value">
+            <select name="slider[<?php echo $index ?>][background_position_end]">
+              <?php foreach (Mage::getModel("revslideshow/backgroundposition")->getOptionArray() as $key => $value): ?>
+              <option value="<?php echo $key ?>" <?php if($key == $slider['background_position_end']) echo "selected" ?>><?php echo $value ?></option>
+              <?php endforeach; ?>    
+            </select>
+          </td>
+          <td class="note"></td>
+        </tr>
+        <tr>
+          <td class="label"><label for="kenburn_effect"><?php echo $this->__("Ken Burns Effect") ?></label></td>
+          <td class="value">
+            <input type="radio" name="slider[<?php echo $index ?>][kenburn_effect]" value="on" id="kenburneon" <?php if($slider['kenburn_effect']=='on') echo "checked='checked'" ?> />
+            <label class="inline" for="shuffleon">On</label>&nbsp;
+            <input type="radio" name="slider[<?php echo $index ?>][kenburn_effect]" value="off" id="kenburenoff" <?php if($slider['kenburn_effect']=='off') echo "checked='checked'" ?> />
+            <label class="inline" for="shuffleoff">Off</label>&nbsp;
+            
+          </td>
+          <td class="note"><span><?php echo $this->__("Ken Burns Effect") ?></span></td>
+        </tr>
+        <tr>
+          <td class="label"><label for="duration_kenburn"><?php echo $this->__("Duration for Ken Burns") ?></label></td>
+          <td class="value">
+            <input type="text" class="input-text" value="<?php echo $slider['duration_kenburn'] ?>" name="slider[<?php echo $index ?>][duration_kenburn]" />
+            
+          </td>
+          <td class="note"><span><?php echo $this->__("The value in ms how long the animation of ken burns effect should go") ?></span></td>
+        </tr>
+        <tr>
+          <td class="label"><label for="easing_kenburn"><?php echo $this->__("Easing of Ken Burns Effect") ?></label></td>
+          <td class="value">
+            <select name="slider[<?php echo $index ?>][easing_kenburn]">
+              <?php foreach (Mage::getModel("revslideshow/easing")->getOptionArray() as $key => $value): ?>
+              <option value="<?php echo $key ?>" <?php if($key == $slider['easing_kenburn']) echo "selected" ?>><?php echo $value ?></option>
+              <?php endforeach; ?>    
+            </select>
+            
+          </td>
+          <td class="note"><span><?php echo $this->__("The Movement Easing") ?></span></td>
+        </tr>        
+        <tr>
+          <td class="label"><label for="transitions"><?php echo $this->__('Transitions') ?></label></td>
+          <td class="value">
+            <select name="slider[<?php echo $index ?>][transitions]" class="sel_trans">
+              <?php foreach (Mage::getModel("revslideshow/transition")->getOptionArray() as $key => $value): ?>
+              <option value="<?php echo $key ?>" <?php if($key == $slider['transitions']) echo "selected" ?>><?php echo $value ?></option>
+              <?php endforeach; ?>
+            </select>
+            
+          </td>
+          <td class="note"><span><?php echo $this->__('The appearance transition of this slide') ?></span></td>
+        </tr>
+        <tr>
+          <td class="label"><label for="slot_amount"><?php echo $this->__('Slot Amount') ?></label></td>
+          <td class="value">
+            <input name="slider[<?php echo $index ?>][slot_amount]" value="<?php echo $slider['slot_amount'] ?>" type="text" class=" input-text">
+            
+          </td>
+          <td class="note"><span><?php echo $this->__('The number of slots or boxes the slide is divided into') ?></span></td>
+        </tr>
+        <tr>
+          <td class="label"><label for="masterspeed"><?php echo $this->__('Transition Duration') ?></label></td>
+          <td class="value">
+            <input name="slider[<?php echo $index ?>][masterspeed]" value="<?php echo $slider['masterspeed'] ?>" type="text" class=" input-text">       
+          </td>
+          <td class="note"><span><?php echo $this->__('The speed of the transition in "ms"') ?></span></td>
+        </tr>
+        <tr>
+          <td class="label"><label for="delay"><?php echo $this->__('Delay') ?></label></td>
+          <td class="value">
+            <input  name="slider[<?php echo $index ?>][delay]" value="<?php echo $slider['delay'] ?>" type="text" class=" input-text">
+            
+          </td>
+          <td class="note"><span><?php echo $this->__('A new Dealy value for the Slide') ?></span></td>
+        </tr>
+        <tr>
+          <td class="label"><label for="link"><?php echo $this->__('Link') ?></label></td>
+          <td class="value">
+            <input name="slider[<?php echo $index ?>][link]" value="<?php echo $slider['link'] ?>" type="text" class=" input-text">
+            
+          </td>
+          <td class="note"><span><?php echo $this->__('A link on the whole slide pic') ?></span></td>
+        </tr>
+      
+         <tr>
+          <td class="label"><label for="video_link"><?php echo $this->__('Video Link') ?></label></td>
+          <td class="value">
+            <input name="slider[<?php echo $index ?>][video_link]" value="<?php echo $slider['video_link'] ?>" type="text" class=" input-text">
+            
+          </td>
+          <td class="note"><span><?php echo $this->__('Video Link. It supports video format .webm or .mp4') ?></span></td>
+        </tr>
+      </tbody>
+    </table>
+    <div class="bottom-slider-container">
+      <button onclick="return addLayer(<?php echo $index ?>);" class="scalable add" type="button" title="Add Layer">
+        <span><span><?php echo $this->__('Add Layer') ?></span></span>
+      </button>
+    </div>
+  </div>
+    <div class="layer_container_<?php echo $index ?>" id="text_layer_<?php echo $index ?>">
+    <?php foreach ($slider['layer'] as $index_layer => $layer): ?>
+        <?php $idLayer = "layer_".$index."_".$index_layer ?>
+        <div class="item option-box expand slider_<?php echo $index ?>" id="<?php echo $idLayer ?>">
+      <a class="btn_expand" href="javascript:void(0);" onclick="em_expand(<?php echo $idLayer ?>)" title="Toggle"><span>Toggle</span></a>
+      <div class="col_first">
+        <div class="right">
+          <button onclick="return duplicateLayer(<?php echo $index?>,'<?php echo $idLayer ?>');" class="btn_add scalable add" type="button" title="Duplicate Layer">
+            <span><span><?php echo $this->__("Duplicate Layer") ?></span></span>
+          </button>
+          <button onclick="return deleteLayer('<?php echo $idLayer ?>');" class="btn_del scalable delete" type="button" title="Delete Layer">
+            <span><span><?php echo $this->__("Delete Layer") ?></span></span>
+          </button>
+        </div>
+      </div>
+      
+      <table cellspacing="0" cellpadding="0" class="option-header">                                 
+        <tbody>
+          <tr>
+            <td class="label"><label for="image"><?php echo $this->__("Text/HTML") ?></label></td>
+            <td class="value">
+              <textarea name="slider[<?php echo $index ?>][layer][<?php echo $index_layer ?>][text]" value=""  class=" input-text textarea"><?php echo $layer['text'] ?></textarea>
+            </td>
+          </tr>
+          <tr>
+            <td class="label"><label for="parallax"><?php echo $this->__("Parallax Level") ?></label></td>
+            <td>
+              <select name="slider[<?php echo $index ?>][layer][<?php echo $index_layer ?>][parallax]" >
+                <?php foreach (Mage::getModel("revslideshow/parallax")->getOptionArray() as $key => $value): ?>
+                <option value="<?php echo $key ?>" <?php if($key == $layer['parallax']) echo "selected" ?>><?php echo $value ?></option>
+                <?php endforeach; ?>
+              </select>
+            </td>
+            <td class="note"><span><?php echo $this->__("Parallax Level will allow the Layer to move based on scroll or mouse movements (if option activated)") ?></span></td>
+          </tr>
+          <tr>
+            <td class="label"><label for="incoming_animation"><?php echo $this->__("Incoming Animation Classes") ?></label></td>
+            <td>
+              <select name="slider[<?php echo $index ?>][layer][<?php echo $index_layer ?>][incoming_animation]" >
+                <?php foreach (Mage::getModel("revslideshow/animate")->getIncomingOptionArray() as $key => $value): ?>
+                <option value="<?php echo $key ?>" <?php if($key == $layer['incoming_animation']) echo "selected" ?>><?php echo $value ?></option>
+                <?php endforeach; ?>
+              </select>
+            </td>
+            <td class="label"><label for="outgoing_animation"><?php echo $this->__("Outgoing Animation Classes") ?></label></td>
+            <td>
+              <select name="slider[<?php echo $index ?>][layer][<?php echo $index_layer ?>][outgoing_animation]" >
+                <?php foreach (Mage::getModel("revslideshow/animate")->getOutgoingOptionArray() as $key => $value): ?>
+                <option value="<?php echo $key ?>" <?php if($key == $layer['outgoing_animation']) echo "selected" ?>><?php echo $value ?></option>
+                <?php endforeach; ?>
+              </select>
+            </td>
+            <td class="note"><span><?php echo $this->__("Animation Classes defined the start / end animations on Captions.") ?>  </span></td>
+          </tr>
+          <tr>
+            <td class="label"><label for="axis_x"><?php echo $this->__("Axis X") ?></label></td>
+            <td>
+              <input name="slider[<?php echo $index ?>][layer][<?php echo $index_layer ?>][axis_x]" value="<?php echo $layer['axis_x'] ?>" type="text" class=" input-text">
+            </td>
+            <td class="label"><label for="axis_y"><?php echo $this->__("Axis Y") ?></label></td>
+            <td>
+              <input name="slider[<?php echo $index ?>][layer][<?php echo $index_layer ?>][axis_y]" value="<?php echo $layer['axis_y'] ?>" type="text" class=" input-text">
+              
+            </td>
+            <td class="note"><span><?php echo $this->__("Possible Values are 'top', 'center', 'bottom', or any Value between -2500  and 2500 ") ?></span></td>
+          </tr>
+          <tr>
+            <td class="label"><label for="start"><?php echo $this->__("Start") ?></label></td>
+            <td>
+              <input name="slider[<?php echo $index ?>][layer][<?php echo $index_layer ?>][start]" value="<?php echo $layer['start'] ?>" type="text" class=" input-text">
+              
+            </td>
+            <td class="label"><label for="end"><?php echo $this->__('End') ?></label></td>
+            <td>
+              <input name="slider[<?php echo $index ?>][layer][<?php echo $index_layer ?>][end]" value="<?php echo $layer['axis_x'] ?>" type="text" class=" input-text">
+              
+            </td>
+            <td class="note"><span><?php echo $this->__("The timepoint in millisecond when/at the Caption should move in/out to the slide.") ?></span></td>
+          </tr>
+          <tr>
+            <td class="label"><label for="start_easing"><?php echo $this->__('Start Easing') ?></label></td>
+            <td>
+              <select name="slider[<?php echo $index ?>][layer][<?php echo $index_layer ?>][start_easing]" >
+                <?php foreach (Mage::getModel("revslideshow/easing")->getOptionArray() as $key => $value): ?>
+                <option value="<?php echo $key ?>" <?php if($key == $layer['start_easing']) echo "selected" ?>><?php echo $value ?></option>
+                <?php endforeach; ?>
+              </select>
+            </td>                    
+            <td class="label"><label for="end_easing"><?php echo $this->__('End Easing') ?></label></td>
+            <td>
+              <select name="slider[<?php echo $index ?>][layer][<?php echo $index_layer ?>][end_easing]" >
+                <?php foreach (Mage::getModel("revslideshow/easing")->getOptionArray() as $key => $value): ?>
+                <option value="<?php echo $key ?>" <?php if($key == $layer['end_easing']) echo "selected" ?>><?php echo $value ?></option>
+                <?php endforeach; ?>
+              </select>
+            </td>
+            <td class="note"><span><?php echo $this->__("The Easing Art how the caption is moved in to the slide") ?></span></td>
+          </tr>
+          <tr>
+            <td class="label"><label for="speed"><?php echo $this->__("Speed") ?></label></td>
+            <td>
+              <input name="slider[<?php echo $index ?>][layer][<?php echo $index_layer ?>][speed]" value="<?php echo $layer['speed'] ?>" type="text" class=" input-text">
+            </td>                                      
+            <td class="note"><span><?php echo $this->__("The Easing Art how the caption is moved in to the slide") ?></span></td>
+          </tr>
+        </tbody>   
+      </table>  
+    </div>
+    <?php endforeach ?>
+  </div>
+    <button class="removeSlider" type="button" onclick="return removeSlider(this);">
+    <span>
+      <span><?php echo $this->__('Remove Slider')?></span>
+    </span>
+  </button>
+<!--   <button class="duplicateSlider" type="button" onclick="return duplicateSlider(this);">
+    <span>
+      <span><?php echo $this->__('Duplicate Slider')?></span>
+    </span>
+  </button> -->
+</div>
+</div>
+<?php endforeach; ?>
+<?php endif; ?>
+</div>
+<script type="text/javascript">
+  
+  jQuery(function($) {
+    $( "#slider-container" )
+    .accordion({
+      header: "> div > h3",
+      collapsible: true,
+      heightStyle: "content",
+      active: false,
+    })
+    .sortable({
+      axis: "y",
+      handle: "h3",
+      stop: function( event, ui ) {        
+        ui.item.children( "h3" ).triggerHandler( "focusout" );
+        $( this ).accordion( "refresh" );
+      }
+    });    
+  });
+  function duplicateSlider(button){      
+      var count = jQuery('.group').length;
+      var i = parseInt(count)+1;
+      var sliderHtml = "<div class='group' id='"+"slider_"+i+"'><h3><?php echo $this->__('Slider')?>"+" "+i+"</h3><div>";
+      sliderHtml += '<div class="slider-container">';
+      sliderHtml += jQuery(button).parentsUntil('#slider-container').last().find("div.slider-container").html();
+      sliderHtml +=  "</div></button></div></div>";
+      jQuery('#slider-container').append(sliderHtml);
+      jQuery('#slider-container').accordion("refresh");
+    return false;
+    
+    
+  }
+  function addNewSlider(){      
+      var count = jQuery('.group').length;
+      var i = parseInt(count)+1;
+      var sliderHtml = "<div class='group' id='"+"slider_"+i+"'><h3><?php echo $this->__('Slider')?>"+" "+i+"</h3><div>";
+      sliderHtml += '<div class="slider-container">';
+      sliderHtml += '<input type="hidden" value="image" name="slider['+i+'][type_slider]" />';
+      sliderHtml += '<label for="slider"><?php echo $this->__("Image") ?></label>';
+      sliderHtml += '<input type="hidden" value="image" name="slider['+i+'][type_slider]" />';
+      sliderHtml += '<table cellspacing="0" cellpadding="0" class="option-header">';
+      sliderHtml += ' <tbody>';
+      sliderHtml += ' <tr>';
+      sliderHtml += ' <td class="label"><label for="title"><?php echo ("Title") ?></label></td>';
+      sliderHtml += ' <td class="value">';
+      sliderHtml += ' <input id="title" name="slider['+i+'][title]" value="" type="text" class=" input-text">       ';
+      sliderHtml += '</td>';
+      sliderHtml += '<td class="note"><span>Use when Navigation Style Preview1 - Preview4 </span></td>';
+      sliderHtml += '</tr>';
+      sliderHtml += '<tr>';
+      sliderHtml += '<td class="label"><label for="image"><?php echo $this->__("Image") ?></label></td>';
+      sliderHtml += '<td class="value">';
+      sliderHtml += '<input type="file" class="input-file" value="" name="slider_'+i+'" />';
+      
+      sliderHtml += '</td>';
+      sliderHtml += '<td class="note"><span><?php echo $this->__("Main Image") ?></span></td>';
+      sliderHtml += '</tr>';
+      sliderHtml += '<tr>';
+      sliderHtml += '<td class="label"><label for="background_repeat">Background Repeat</label></td>';
+      sliderHtml += '<td class="value">';
+      
+      sliderHtml += '              <select name="slider['+i+'][background_repeat]">';
+      <?php foreach (Mage::getModel("revslideshow/repeat")->getOptionArray() as $key => $value): ?>
+      sliderHtml += '   <option value="<?php echo $key ?>"><?php echo $value ?></option>';
+      <?php endforeach; ?>
+      
+      sliderHtml += '</select>';
+      sliderHtml += '</td>';
+      sliderHtml += '<td class="note"><span><?php echo $this->__("The way the image is shown in the slide main container") ?></span></td>';
+      sliderHtml += '</tr>';
+      sliderHtml += '<tr>';
+      sliderHtml += '<td class="label"><label for="background_fit"><?php echo $this->__("Background Fit") ?></label></td>';
+      sliderHtml += '<td class="value">';
+      sliderHtml += '<input id="bgfit" name="slider['+i+'][background_fit]" value="" type="text" class=" input-text">';
+      
+      sliderHtml += '</td>';
+      sliderHtml += '<td class="note"><span><?php echo $this->__("Possible values: <strong>cover / contain / normal / width(%) height(%)")?></strong>.</br><?php echo $this->__("select one to decide how the image should fit in the Slide Main Container. For Kenburn only use number") ?>';
+      sliderHtml += '</span></td>';
+      sliderHtml += '</tr>';
+      sliderHtml += '<tr>';
+      sliderHtml += '<td class="label"><label for="background_position"><?php echo $this->__("Background Position") ?></label></td>';
+      sliderHtml += '<td class="value">';
+      sliderHtml += '<select name="slider['+i+'][background_position]">';
+      <?php foreach (Mage::getModel("revslideshow/backgroundposition")->getOptionArray() as $key => $value): ?>
+      sliderHtml += '<option value="<?php echo $key ?>"><?php echo $value ?></option>';
+      <?php endforeach; ?>
+      sliderHtml += '</select>';
+      
+      sliderHtml += '</td>';
+      sliderHtml += '<td class="note"></td>';
+      sliderHtml += '</tr>';
+      sliderHtml += '<tr>';
+      sliderHtml += '<td class="label"><label for="background_position_end"><?php echo $this->__("Background Position End") ?></label></td>';
+      sliderHtml += '<td class="value">';
+      sliderHtml += '<select name="slider['+i+'][background_position_end]">';
+      <?php foreach (Mage::getModel("revslideshow/backgroundposition")->getOptionArray() as $key => $value): ?>
+      sliderHtml += '  <option value="<?php echo $key ?>"><?php echo $value ?></option>';
+      <?php endforeach; ?>    
+      sliderHtml += '</select>';
+      sliderHtml += '</td>';
+      sliderHtml += '<td class="note"></td>';
+      sliderHtml += '</tr>';
+      sliderHtml += '<tr>';
+      sliderHtml += '<td class="label"><label for="kenburn_effect"><?php echo $this->__("Ken Burns Effect") ?></label></td>';
+      sliderHtml += '<td class="value">';
+      sliderHtml += '<input type="radio" name="slider['+i+'][kenburn_effect]" value="on" id="kenburneon" />';
+      sliderHtml += '<label class="inline" for="shuffleon">On</label>';
+      sliderHtml += '<input type="radio" name="slider['+i+'][kenburn_effect]" value="off" id="kenburenoff" checked="checked" />';
+      sliderHtml += '<label class="inline" for="shuffleoff">Off</label>';
+      
+      sliderHtml += '</td>';
+      sliderHtml += '<td class="note"><span><?php echo $this->__("Ken Burns Effect") ?></span></td>';
+      sliderHtml += '</tr>';
+      sliderHtml += '<tr>';
+      sliderHtml += '<td class="label"><label for="duration_kenburn"><?php echo $this->__("Duration for Ken Burns") ?></label></td>';
+      sliderHtml += '<td class="value">';
+      sliderHtml += '<input type="text" class="input-text" value="" name="slider['+i+'][duration_kenburn]" />';
+      
+      sliderHtml += '</td>';
+      sliderHtml += '<td class="note"><span><?php echo $this->__("The value in ms how long the animation of ken burns effect should go") ?></span></td>';
+      sliderHtml += '</tr>';
+      sliderHtml += '<tr>';
+      sliderHtml += '<td class="label"><label for="easing_kenburn"><?php echo $this->__("Easing of Ken Burns Effect") ?></label></td>';
+      sliderHtml += '<td class="value">';
+      sliderHtml += '<select name="slider['+i+'][easing_kenburn]">';
+      <?php foreach (Mage::getModel("revslideshow/easing")->getOptionArray() as $key => $value): ?>
+      sliderHtml += '<option value="<?php echo $key ?>"><?php echo $value ?></option>';
+      <?php endforeach; ?>    
+      sliderHtml += '</select>';
+      
+      sliderHtml += '</td>';
+      sliderHtml += '<td class="note"><span><?php echo $this->__("The Movement Easing") ?></span></td>';
+      sliderHtml += '</tr>        ';
+      sliderHtml += '<tr>';
+      sliderHtml += '<td class="label"><label for="transition"><?php echo $this->__("Transitions") ?></label></td>';
+      sliderHtml += '<td class="value">';
+      sliderHtml += '<select name="slider['+i+'][transition]" class="sel_trans">';
+      <?php foreach (Mage::getModel("revslideshow/transition")->getOptionArray() as $key => $value): ?>
+      sliderHtml += ' <option value="<?php echo $key ?>"><?php echo $value ?></option>';
+      <?php endforeach; ?>
+      sliderHtml += '</select>';
+      
+      sliderHtml += '</td>';
+      sliderHtml += '<td class="note"><span><?php echo $this->__("The appearance transition of this slide") ?></span></td>';
+      sliderHtml += '</tr>';
+      sliderHtml += '<tr>';
+      sliderHtml += '<td class="label"><label for="slot_amount"><?php echo $this->__("Slot Amount") ?></label></td>';
+      sliderHtml += '<td class="value">';
+      sliderHtml += '<input name="slider['+i+'][slot_amount]" value="" type="text" class=" input-text">';       
+      sliderHtml += '            </td>';
+      sliderHtml += '<td class="note"><span><?php echo $this->__("The number of slots or boxes the slide is divided into") ?></span></td>';
+      sliderHtml += '</tr>';
+      sliderHtml += '<tr>';
+      sliderHtml += '<td class="label"><label for="transition_duration"><?php echo $this->__("Transition Duration") ?></label></td>';
+      sliderHtml += '<td class="value">';
+      sliderHtml += '<input name="slider['+i+'][transition_duration]" value="" type="text" class=" input-text">       ';
+      sliderHtml += '</td>';
+      sliderHtml += '<td class="note"><span><?php echo $this->__("The speed of the transition in ms") ?></span></td>';
+      sliderHtml += '</tr>';
+      sliderHtml += '<tr>';
+      sliderHtml += '<td class="label"><label for="delay"><?php echo $this->__("Delay") ?></label></td>';
+      sliderHtml += '<td class="value">';
+      sliderHtml += '<input  name="slider['+i+'][delay]" value="" type="text" class=" input-text">';
+      
+      sliderHtml += '</td>';
+      sliderHtml += '<td class="note"><span><?php echo $this->__("A new Dealy value for the Slide") ?></span></td>';
+      sliderHtml += '</tr>';
+      sliderHtml += '<tr>';
+      sliderHtml += '<td class="label"><label for="link"><?php echo $this->__("Link") ?></label></td>';
+      sliderHtml += '<td class="value">';
+      sliderHtml += '<input name="slider['+i+'][link]" value="" type="text" class=" input-text">';
+      
+      sliderHtml += '</td>';
+      sliderHtml += '<td class="note"><span><?php echo $this->__("A link on the whole slide pic") ?></span></td>';
+      sliderHtml += '</tr>';
+       sliderHtml += '<tr>';
+      sliderHtml += '<td class="label"><label for="video_link"><?php echo $this->__("Video Link") ?></label></td>';
+      sliderHtml += '<td class="value">';
+      sliderHtml += '<input name="slider['+i+'][video_link]" value="" type="text" class=" input-text">';
+      
+      sliderHtml += '</td>';
+      sliderHtml += '<td class="note"><span><?php echo $this->__("Video Link. It supports video format .webm or .mp4") ?></span></td>';
+      sliderHtml += '</tr>';         
+      sliderHtml += '</tbody>';
+      sliderHtml += '</table>';
+      sliderHtml += '<div class="bottom-slider-container">';
+      sliderHtml += '<button onclick="return addLayer('+i+');" class="scalable add" type="button" title="Add Layer">';
+      sliderHtml += '<span><span><?php echo $this->__("Add Layer") ?></span></span>';
+      sliderHtml += '</button></div></div>';
+      sliderHtml += '<div class="layer_container_'+i+'"></div>';
+      sliderHtml += "<button class='removeSlider' type='button' onclick='removeSlider(this)'>"
+      sliderHtml +=  "  <span>";
+      sliderHtml +=  "         <span>Remove Slider</span>";
+      sliderHtml +=  " </span>";
+      sliderHtml +=  " </button></div></div>";
+      jQuery('#slider-container').append(sliderHtml);
+      jQuery('#slider-container').accordion("refresh");    
+      return false;    
+  }
+  
+  function removeSlider(button){  
+    var r=confirm("Are you sure to delete ?");    
+    if (r==true){
+      jQuery(button).parentsUntil('#slider-container').last().fadeOut('fast', function(){
+        jQuery(this).remove();
+      });
+    }
+    return false;
+    
+    
+  }
+  
+  function em_expand(element){
+    var div = jQuery(element);
+    div.toggleClass("expand");    
+  }
+  function duplicateLayer(id,idSlider){
+     var count = jQuery('.layer_container_'+id+ " .item").length;
+    var i = parseInt(count)+1;      
+    var idnew = "layer_"+id+"_"+i;    
+    var html = jQuery('#'+idSlider+" table").html();
+    var layerHtml = "";
+    layerHtml += '<div class="item option-box expand slider_'+id+'" id="'+idnew+'">';
+    layerHtml += '<a class="btn_expand" href="javascript:void(0);" onclick="em_expand('+"'"+idnew+"'"+')" title="Toggle"><span>Toggle</span></a>';
+    layerHtml += '<div class="col_first">';
+    layerHtml += '<div class="right">';
+   layerHtml += '<button onclick="return duplicateLayer('+id+','+"'"+idnew+"'"+');" class="btn_add scalable add" type="button" title="Duplicate Layer">';
+    layerHtml += '<span><span><?php echo $this->__("Duplicate Layer") ?></span></span>';
+    layerHtml += '</button>';
+    layerHtml += '<button onclick="return deleteLayer('+"'"+idnew+"'"+');" class="btn_del scalable delete" type="button" title="Delete Layer">';
+    layerHtml += '<span><span><?php echo $this->__("Delete Layer") ?></span></span>';
+    layerHtml += '</button>';
+    layerHtml += '</div>';
+    layerHtml += '</div>';
+    layerHtml += '<table cellspacing="0" cellpadding="0" class="option-header">';   
+    layerHtml += html;
+    layerHtml += '</table>';  
+    layerHtml += '</div>';    
+    console.log(idSlider);
+    console.log(layerHtml);
+     jQuery('.layer_container_'+id).append(layerHtml);    
+    return false;    
+  }
+  function addLayer(idSlider){
+    var count = jQuery('.layer_container_'+idSlider+ " .item").length;
+    var i = parseInt(count)+1;
+    var id = "layer_"+idSlider+"_"+i;    
+    var layerHtml = "";
+    layerHtml += '<div class="item option-box expand slider_'+idSlider+'" id="'+id+'">';
+    layerHtml += '<a class="btn_expand" href="javascript:void(0);" onclick="em_expand('+"'"+id+"'"+')" title="Toggle"><span>Toggle</span></a>';
+    layerHtml += '<div class="col_first">';
+    layerHtml += '<div class="right">';
+    layerHtml += '<button onclick="return duplicateLayer('+idSlider+','+"'"+id+"'"+');" class="btn_add scalable add" type="button" title="Duplicate Layer">';
+    layerHtml += '<span><span><?php echo $this->__("Duplicate Layer") ?></span></span>';
+    layerHtml += '</button>';
+    layerHtml += '<button onclick="return deleteLayer('+"'"+id+"'"+');" class="btn_del scalable delete" type="button" title="Delete Layer">';
+    layerHtml += '<span><span><?php echo $this->__("Delete Layer") ?></span></span>';
+    layerHtml += '</button>';
+    layerHtml += '</div>';
+    layerHtml += '</div>';
+    
+    layerHtml += '<table cellspacing="0" cellpadding="0" class="option-header">';                                 
+    layerHtml += '<tbody>';
+    layerHtml += '<tr>';
+    layerHtml +=     '<td class="label"><label for="text"><?php echo $this->__("Text/HTML") ?></label></td>';
+    'layerHtml +=    <td class="value">';
+    layerHtml +=       '<textarea name="slider['+idSlider+'][layer]['+i+'][text]" value="" class=" input-text textarea"> </textarea>';               
+    layerHtml +=     '</td>';
+    layerHtml +=   '</tr>';
+    layerHtml +=   '<tr>';
+    layerHtml += '<td class="label"><label for="parallax"><?php echo $this->__("Parallax Level") ?></label></td>';
+    layerHtml += '<td>';
+    layerHtml += '<select name="slider['+idSlider+'][layer]['+i+'][parallax]" >';
+    <?php foreach (Mage::getModel("revslideshow/parallax")->getOptionArray() as $key => $value): ?>
+    layerHtml +=   '<option value="<?php echo $key ?>"><?php echo $value ?></option>';
+    <?php endforeach; ?>
+    layerHtml +=     '</select>';
+    layerHtml +=   '</td>';
+    layerHtml +=   '<td class="note"><span><?php echo $this->__("Parallax Level will allow the Layer to move based on scroll or mouse movements (if option activated)") ?></span></td>';
+    layerHtml += '</tr>';
+    layerHtml += '<tr>';
+    layerHtml += '<td class="label"><label for="incoming_animation"><?php echo $this->__("Incoming Animation Classes") ?></label></td>';
+    layerHtml += '<td>';
+    layerHtml += '<select name="slider['+idSlider+'][layer]['+i+'][incoming_animation]" >';
+    <?php foreach (Mage::getModel("revslideshow/animate")->getIncomingOptionArray() as $key => $value): ?>
+    layerHtml += '<option value="<?php echo $key ?>"><?php echo $value ?></option>';
+    <?php endforeach; ?>
+    layerHtml += '</select>';
+    layerHtml += '</td>';
+    
+    
+    layerHtml += '<td class="label"><label for="outgoing_animation"><?php echo $this->__("Outgoing Animation Classes") ?></label></td>';
+    layerHtml += '<td>';
+    layerHtml += '<select name="slider['+idSlider+'][layer]['+i+'][outgoing_animation]" >';
+    <?php foreach (Mage::getModel("revslideshow/animate")->getOutgoingOptionArray() as $key => $value): ?>
+    layerHtml += '<option value="<?php echo $key ?>"><?php echo $value ?></option>';
+    <?php endforeach; ?>
+    layerHtml += '</select>';
+    layerHtml += '</td>';
+    layerHtml += '<td class="note"><span><?php echo $this->__("Animation Classes defined the start / end animations on Captions.") ?>  </span></td>';
+    layerHtml += '</tr>';
+    layerHtml += '<tr>';
+    layerHtml += '<td class="label"><label for="axis_x"><?php echo $this->__("Axis X") ?></label></td>';
+    layerHtml += '<td>';
+    layerHtml += '<input name="slider['+idSlider+'][layer]['+i+'][axis_x]" value="" type="text" class=" input-text">';
+    layerHtml += '</td>';
+    layerHtml += '<td class="label"><label for="axis_y"><?php echo $this->__("Axis Y") ?></label></td>';
+    layerHtml += '<td>';
+    layerHtml += '<input name="slider['+idSlider+'][layer]['+i+'][axis_y]" value="" type="text" class=" input-text">';
+    
+    layerHtml += '</td>';
+    layerHtml += '<td class="note"><span><?php echo $this->__("Possible Values are top, center, bottom, or any Value between -2500  and 2500 ") ?></span></td>';
+    layerHtml += '</tr>';
+    layerHtml += '<tr>';
+    layerHtml += '<td class="label"><label for="start"><?php echo $this->__("Start") ?></label></td>';
+    layerHtml += '<td>';
+    layerHtml += '<input name="slider['+idSlider+'][layer]['+i+'][start]" value="" type="text" class=" input-text">';
+    
+    layerHtml += '</td>';
+    layerHtml += '<td class="label"><label for="end"><?php echo $this->__('End') ?></label></td>';
+    layerHtml += '<td>';
+    layerHtml +=  '<input name="slider['+idSlider+'][layer]['+i+'][end]" value="" type="text" class=" input-text">';
+    
+    layerHtml += '</td>';
+    layerHtml += '<td class="note"><span><?php echo $this->__("The timepoint in millisecond when/at the Caption should move in/out to the slide.") ?></span></td>';
+    layerHtml += '</tr>';
+    layerHtml += '<tr>';
+    layerHtml += '<td class="label"><label for="start_easing"><?php echo $this->__('Start Easing') ?></label></td>';
+    layerHtml += '<td>';
+    layerHtml += '<select name="slider['+idSlider+'][layer]['+i+'][start_easing]" >';
+    <?php foreach (Mage::getModel("revslideshow/easing")->getOptionArray() as $key => $value): ?>
+    layerHtml += '<option value="<?php echo $key ?>"><?php echo $value ?></option>';
+    <?php endforeach; ?>
+    layerHtml += '</select>';
+    layerHtml += '</td>';                    
+    layerHtml += '<td class="label"><label for="end_easing"><?php echo $this->__('End Easing') ?></label></td>';
+    layerHtml += '<td>';
+    layerHtml += '<select name="slider['+idSlider+'][layer]['+i+'][end_easing]" >';
+    <?php foreach (Mage::getModel("revslideshow/easing")->getOptionArray() as $key => $value): ?>
+    layerHtml += '<option value="<?php echo $key ?>"><?php echo $value ?></option>';
+    <?php endforeach; ?>
+    layerHtml += '</select>';
+    layerHtml += '</td>';
+    layerHtml += '<td class="note"><span><?php echo $this->__("The Easing Art how the caption is moved in to the slide") ?></span></td>';
+    layerHtml += '</tr>';
+    layerHtml += '<tr>';
+    layerHtml += '<td class="label"><label for="speed"><?php echo $this->__("Speed") ?></label></td>';
+    layerHtml += '<td>';
+    layerHtml += '<input name="slider['+idSlider+'][layer]['+i+'][speed]" value="" type="text" class=" input-text">';
+    layerHtml += '</td>';                                      
+    layerHtml += '<td class="note"><span><?php echo $this->__("The Easing Art how the caption is moved in to the slide") ?></span></td>';
+    layerHtml += '</tr>';
+    layerHtml += '</tbody>';   
+    layerHtml += '</table>';  
+    layerHtml += '</div>';
+    jQuery('.layer_container_'+idSlider).append(layerHtml);    
+    return false;        
+  }
+  
+  function deleteLayer(element){
+    var r=confirm("Are you sure to delete ?");    
+    if (r==true){
+      jQuery("#"+element).remove();
+    }
+  }
+
+
+
+  </script>   
+</div>
+<?php echo $this->getChildHtml('form_after');?> 
