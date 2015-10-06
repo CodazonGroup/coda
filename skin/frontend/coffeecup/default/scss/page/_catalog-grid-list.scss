@@ -1,0 +1,139 @@
+a.product-image{
+	position:relative; 
+	margin-bottom:15px; 
+	display:block;
+	img{
+		width:100%;
+		height:auto;
+	}
+}
+/* -------------------------------------------- *
+ * Product Name
+ */
+h2.product-name,
+h3.product-name,
+h4.product-name,
+h5.product-name,
+p.product-name {
+  margin: 0; margin-bottom: 0.5em; color:#34495e; font:$f_h5; text-rendering: optimizeLegibility; font-weight:600;
+	a{ 
+		color:#34495e;
+		&:hover{
+			color:#34495e; text-decoration: none;
+		}
+  }
+}
+/* -------------------------------------------- *
+ * Price
+ */
+.price-notice {
+  color: #a0a0a0;
+}
+.price {
+	font:$f_h3; color:#34495e;
+}
+.price-box{
+	.price {
+		font:$f_h3; color:#34495e;
+	}
+}
+
+
+
+
+.ratings{
+	padding:0 0 1rem;
+	.rating-box{ 
+		margin-right:0;
+	}
+	.amount{
+		/*display:none;*/
+	}
+}
+div.desc{
+	margin-bottom:1.55rem;
+}
+/* View Type: Grid */
+
+.products-grid{
+	.item{
+		margin:0 0 10px;
+		float:left;
+		text-align:center;
+		margin-right:20px;
+		.product-shop{
+			display:inline-block;
+			width:100%;
+			@include transition1;
+			padding:0 10px 10px;
+			.f-fix{ 
+			}
+		}
+	}
+}
+
+.category-products {
+	.products-grid{
+		li.item{
+			padding:0 10px;
+			margin-right:0;			
+		}
+	}
+	.item .product-item{
+		overflow:hidden;
+		width:auto; display:block; min-height:100%;
+		&:hover{
+			position:absolute;
+			top:0;
+			left:10px;
+			right:10px;
+			z-index:2;
+		}
+	}
+	.products-grid .em-btn-addto button.button{
+		margin-bottom:0;
+		font-size:0;
+		span{
+			padding:0;
+		}
+	}
+}
+
+	
+/* View Type: List */
+.products-list{
+	.product-image { 
+		float:left; 
+		margin:0 20px 10px 0; 
+	}
+	.product-shop {
+		overflow:hidden;
+		text-align:left;
+		.price-box{
+			margin-bottom:14px;
+		}
+	}
+	div.item{
+		display:inline-block;
+		width:100%;
+		margin-bottom:20px;
+	}
+	li.item{
+		overflow:hidden;
+	}
+}
+
+.products-list{
+	> .item{
+		padding:10px;
+		border:1px solid transparent;
+		@include border-radius(3px);
+		margin-bottom:40px;
+		a.product-image{
+			margin-bottom:0;
+		}
+		.product-shop{
+			margin-bottom:10px;
+		}
+	}
+}

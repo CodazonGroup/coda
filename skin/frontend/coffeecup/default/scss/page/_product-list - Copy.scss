@@ -89,7 +89,6 @@ div.desc{
 		}
 	}
 	.item .product-item{
-		@include cat-effect01;
 		overflow:hidden;
 		width:auto; display:block; min-height:100%;
 		&:hover{
@@ -143,7 +142,6 @@ div.desc{
 .products-list{
 	> .item{
 		padding:10px;
-		@include cat-effect01;
 		border:1px solid transparent;
 		@include border-radius(3px);
 		margin-bottom:40px;

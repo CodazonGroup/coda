@@ -1,27 +1,30 @@
 @import "theme-var";
 @import "mixins/theme-mixin";
 
+
 /*Core*/
 @import "core/reset";
+@import "global";
 @import "core/button";
-@import "core/table";
+//@import "core/table";
 @import "core/effects";
 
 
-@import "global";
+
 
 
 /*Funtion*/
 
 
 /*Page*/
+@import "page/catalog-grid-list";
 //@import "page/blog";
 //@import "page/contacts";
 //@import "page/checkout-cart";
 //@import "page/checkout-onepage";
 //@import "page/checkout-success";
 //@import "page/blocksidebar-widget";
-@import "page/product-list";//product grid/list
+//@import "page/product-list";//product grid/list
 //@import "page/catalog-product";//product detail
 //@import "page/customer-account";//my-account
 //@import "page/customer-form";//login-register

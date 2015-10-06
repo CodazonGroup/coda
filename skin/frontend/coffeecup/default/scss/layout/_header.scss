@@ -1,8 +1,8 @@
 /* ============================================ *
  * Header
  * ============================================ */
-.header-top{background:$bg-normal-2nd; color:$text_normal_1st; font:$f_h5;}
-.header{background:$bg-normal-1st; color:$text_normal_2nd; border-bottom:10px solid $bg-normal-3rd; font:$f_h5; min-height:136px;
+.header-top{background:$bg-normal-2nd; color:$text_normal_1st;}
+.header{background:$bg-normal-1st; color:$text_normal_2nd; border-bottom:10px solid $bg-normal-3rd; min-height:136px; font:$f_h5;
 	li.level0 > a{color:$text_normal_2nd}
 }
 .header-language-currency,

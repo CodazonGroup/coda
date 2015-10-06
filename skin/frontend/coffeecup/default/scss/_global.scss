@@ -9,7 +9,7 @@ a:hover       { text-decoration:none; color:$text_normal_1st}
 :focus        { outline:0; }
 a:focus { outline:0!important; }
 h1,.h1{font:$f_h1;color:$text_default; text-transform:uppercase; margin:0 0 10px}
-h2,.h2{font:$f_h2; color:$text_default; text-transform:capitalize!important; margin:0 0 10px}
+h2,.h2{font:$f_h2; color:$text_default; text-transform:capitalize; margin:0 0 10px}
 h3,.h3{font:$f_h3;}
 h4,.h4{font:$f_h4;}
 h5,.h5{font:$f_h5;}
@@ -40,6 +40,12 @@ label{ }
 
 .text-uppercase{text-transform:uppercase}
 .clear-padding{padding:0}
+/************Custom Class*********************/
+.space_small{padding-bottom:20px}
+.space_default{padding-bottom:30px}
+.space_large{padding-bottom:50px}
+
+
 /*************************MIXIN THEME********************************/
 @mixin block-page-title{text-align:center; 
 	.b-title{padding:($spa_small + 5) $spa_large; margin-bottom:$spa_large; border-bottom:1px solid $text_default; display:inline-block; vertical-align:top; position:relative; min-width:310px; text-transform:uppercase !important; font:$f_h1;

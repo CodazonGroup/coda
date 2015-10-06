@@ -2,6 +2,7 @@
  * Content
  * ============================================ */
  @import "home/wapper-blog01";
+ @import "home/wapper-product01";
  
  
 .slider_brand{padding:$spa_large / 2 0; margin-bottom:$spa_large; border:1px solid #f1f1f1;
@@ -18,9 +19,19 @@
 }
 
 .nav-tabs-01 .nav-tabs{
-	border:0; text-align:center; display:inline-block;vertical-align:top;
+	border:0; text-align:center; display:inline-block;vertical-align:top; margin-bottom:50px; padding:0 26px; overflow:hidden;
 	li{}
-	> li > a{@include border-radius(0); color:$text_normal_2nd; background-color:$bg-normal-4th; border:0; text-transform:uppercase; margin-right:0; @include transition; font:$f_h4; font-weight:600; display:block !important}
+	> li > a{@include border-radius(0); color:$text_normal_2nd; background-color:$bg-normal-4th; border:0; text-transform:uppercase; margin-right:0; @include transition; font:$f_h4; font-weight:600; display:block !important; padding:13px 20px; margin:0 10px;
+		&:before{ content:''; position:absolute; top:-10px; left:-11px; width:23px; height:66px; background:$bg-normal-4th; -ms-transform: rotate(30deg); /* IE 9 */
+		-webkit-transform: rotate(30deg); /* Chrome, Safari, Opera */
+		transform: rotate(30deg); @include transition}
+		&:after{ content:''; position:absolute; top:-10px; right:-11px; width:23px; height:66px; background:$bg-normal-4th; -ms-transform: rotate(30deg); /* IE 9 */
+		-webkit-transform: rotate(30deg); /* Chrome, Safari, Opera */
+		transform: rotate(30deg); @include transition}
+	}
 	> li:hover > a,
-	> li.active > a, > li.active > a:hover, > li.active > a:focus{border:0; background-color:$bg-normal-3rd; color:$text_normal_2nd; border:0}
+	> li.active > a, > li.active > a:hover, > li.active > a:focus{border:0; background-color:$bg-normal-3rd; color:$text_normal_2nd; border:0;
+		&:before{ background:$bg-normal-3rd;}
+		&:after{ background:$bg-normal-3rd;}
+	}
 }

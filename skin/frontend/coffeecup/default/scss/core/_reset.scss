@@ -1728,7 +1728,6 @@ a.button:hover {
  */
 .price-box {
   margin: 7px 0;
-  font-family: "Helvetica Neue", Verdana, Arial, sans-serif;
 }
 
 .price-box p {
@@ -1950,13 +1949,6 @@ span.weee {
 /* -------------------------------------------- *
  * Add to links
  */
-.add-to-links {
-  margin: 7px 0;
-}
-.add-to-links a {
-  display: inline-block;
-  padding: 0px 3px 3px;
-}
 
 .add-to-links .separator {
   display: none;
@@ -1969,7 +1961,7 @@ span.weee {
 .no-touch .product-img-box .product-image:not(.zoom-available):hover {
   position: relative;
   display: block;
-  border: 1px solid #ededed; overflow:hidden;
+  /*border: 1px solid #ededed;*/ overflow:hidden;
 }
 
 @media only screen and (max-width: 770px) {
@@ -4115,56 +4107,7 @@ body.catalogsearch-result-index .page-title h1 {
   white-space: normal;
 }
 
-/* -------------------------------------------- *
- * Product Name
- */
-h2.product-name,
-h3.product-name,
-h4.product-name,
-h5.product-name,
-p.product-name {
-  margin: 0;
-  margin-bottom: 0.5em;
-  color: #636363;
-  font-family: "Raleway", "Helvetica Neue", Verdana, Arial, sans-serif;
-  font-size: 24px;
-  font-weight: 400;
-  font-style: normal;
-  line-height: 1.2;
-  text-rendering: optimizeLegibility;
-  text-transform: uppercase;
-  font-size: 13px;
-  font-family: "Helvetica Neue", Verdana, Arial, sans-serif;
-  font-weight: normal;
-  line-height: 1.4;
-}
-h2.product-name a,
-h3.product-name a,
-h4.product-name a,
-h5.product-name a,
-p.product-name a {
-  color: #636363;
-}
-h2.product-name a:hover,
-h3.product-name a:hover,
-h4.product-name a:hover,
-h5.product-name a:hover,
-p.product-name a:hover {
-  color: #3399cc;
-  text-decoration: none;
-}
 
-.products-grid .product-name,
-.products-list .product-name {
-  text-transform: uppercase;
-  margin-bottom: 5px;
-  font-size: 14px;
-  font-family: "Raleway", "Helvetica Neue", Verdana, Arial, sans-serif;
-}
-.products-grid .product-name a,
-.products-list .product-name a {
-  font-weight: 500;
-}
 
 /* ============================================ *
  * Product Grid
@@ -4214,13 +4157,6 @@ p.product-name a:hover {
   padding-bottom: 95px;
 }
 
-.products-grid .actions {
-  padding-top: 10px;
-  position: absolute;
-  bottom: 0px;
-  min-height: 85px;
-  width: 100%;
-}
 
 .products-grid .ratings .rating-box {
   margin: 0 auto;
@@ -4240,9 +4176,6 @@ p.product-name a:hover {
   margin-bottom: 0;
 }
 
-.products-grid .product-image {
-  margin-bottom: 5px;
-}
 /*.products-grid .product-image:before, .products-grid .product-image:after {
   content: '';
   position: absolute;

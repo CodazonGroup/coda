@@ -1,0 +1,20 @@
+.wapper-product01{
+	overflow:hidden;
+		.products-grid{ margin:0 (-$spa_small);
+			li.item{
+				width:calc(100% / 5 - 20px);
+				margin:0 10px;
+				padding:0;
+				border:none;
+				display:inline-table; vertical-align:top;
+				
+				.actions{
+					display:inline-block; width:100%; vertical-align:top; text-align:center;
+					.actions-button{ display:inline-block; }
+					.quick-view,
+					button.button.btn-cart,
+					.add-to-links{ float:left;}
+				}
+			}
+		}
+}
