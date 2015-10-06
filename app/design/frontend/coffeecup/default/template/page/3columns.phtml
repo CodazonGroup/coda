@@ -49,19 +49,39 @@
         <?php echo $this->getChildHtml('header') ?>
         <div class="main-container col3-layout">
             <div class="main">
-                <?php echo $this->getChildHtml('breadcrumbs') ?>
-                <div class="col-wrapper">
-                    <?php // This left_first block will display above the main content on smaller viewports ?>
-                    <?php if ($_leftContent = $this->getChildHtml('left_first')): ?>
-                        <div class="col-left sidebar col-left-first"><?php echo $_leftContent;   ?></div>
-                    <?php endif; ?>
-                    <div class="col-main">
-                        <?php echo $this->getChildHtml('global_messages') ?>
-                        <?php echo $this->getChildHtml('content') ?>
-                    </div>
-                    <div class="col-left sidebar"><?php echo $this->getChildHtml('left') ?></div>
+				<div class="cdz-breadcrumbs">
+					<div class="container">
+						<div class="row">
+							<div class="col-sm-24">
+								<?php echo $this->getChildHtml('breadcrumbs') ?>
+							</div>
+						</div>	
+					</div>
+				</div>
+				<div class="cdz-main-container">
+					<div class="container">
+						<div class="row">
+							<div class="col-sm-6">
+								<?php // This left_first block will display above the main content on smaller viewports ?>
+								<?php if ($_leftContent = $this->getChildHtml('left_first')): ?>
+								<div class="cdz-col-left sidebar col-left-first"><?php echo $_leftContent;   ?></div>
+								<?php endif; ?>
+							</div>
+							<div class="col-sm-12">
+								<div class="cdz-col-main">
+								<?php echo $this->getChildHtml('global_messages') ?>
+								<?php echo $this->getChildHtml('content') ?>
+								</div>
+							</div>
+							<div class="col-sm-6">
+								<div class="cdz-col-left sidebar"><?php echo $this->getChildHtml('left') ?></div>
+							</div>
+							<div class="col-sm-6">
+								<div class="cdz-col-right sidebar"><?php echo $this->getChildHtml('right') ?></div>
+							</div>
+						</div>
+					</div>
                 </div>
-                <div class="col-right sidebar"><?php echo $this->getChildHtml('right') ?></div>
             </div>
         </div>
         <?php echo $this->getChildHtml('footer_before') ?>

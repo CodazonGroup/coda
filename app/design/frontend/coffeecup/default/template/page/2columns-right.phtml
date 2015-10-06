@@ -49,12 +49,30 @@
         <?php echo $this->getChildHtml('header') ?>
         <div class="main-container col2-right-layout">
             <div class="main">
-                <?php echo $this->getChildHtml('breadcrumbs') ?>
-                <div class="col-main">
-                    <?php echo $this->getChildHtml('global_messages') ?>
-                    <?php echo $this->getChildHtml('content') ?>
+				<div class="cdz-breadcrumbs">
+					<div class="container">
+						<div class="row">
+							<div class="col-sm-24">
+								<?php echo $this->getChildHtml('breadcrumbs') ?>
+							</div>
+						</div>	
+					</div>
+				</div>
+				<div class="cdz-main-container">
+					<div class="container">
+						<div class="row">
+							<div class="col-sm-18">
+								<div class="cdz-col-main">
+								<?php echo $this->getChildHtml('global_messages') ?>
+								<?php echo $this->getChildHtml('content') ?>
+								</div>
+							</div>
+							<div class="col-sm-6">
+								<div class="cdz-col-right sidebar"><?php echo $this->getChildHtml('right') ?></div>
+							</div>
+						</div>
+					</div>
                 </div>
-                <div class="col-right sidebar"><?php echo $this->getChildHtml('right') ?></div>
             </div>
         </div>
         <?php echo $this->getChildHtml('footer_before') ?>
